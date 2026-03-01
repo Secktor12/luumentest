@@ -97,17 +97,24 @@
             /* Permite que la sombra gigante sobresalga sin cortarse */
         }
 
+        .cards-swiper .swiper-wrapper {
+            align-items: center;
+            /* Permite centrar dinámicamente */
+        }
+
         .cards-swiper .swiper-slide {
             width: auto;
-            height: clamp(260px, 48vh, 380px);
-            /* Más altas para el móvil, rellenando huecos verticales */
+            height: 100%;
+            /* Hereda la altura máxima exacta disponible del main */
+            max-height: 70vh;
+            /* Seguridad flex */
+            max-width: 90vw;
             aspect-ratio: 2.2 / 3.3;
         }
 
         @media (min-width: 640px) {
             .cards-swiper .swiper-slide {
-                height: clamp(280px, 65vh, 600px);
-                /* Estiradas al máximo verticalmente en PC */
+                max-height: 75vh;
             }
         }
 
@@ -349,8 +356,8 @@
                 </h2>
             </div>
         </header>
-        <main class="flex-grow flex flex-col items-center justify-center min-h-0 w-full mb-0 sm:mb-2">
-            <div class="swiper cards-swiper mb-0 sm:mb-2 mt-0 sm:mt-2">
+        <main class="flex-grow relative min-h-0 w-full my-1 sm:my-2">
+            <div class="swiper cards-swiper absolute inset-0">
                 <div class="swiper-wrapper">
                     <!-- Carta 1 -->
                     <div class="swiper-slide group">
