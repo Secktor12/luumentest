@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap');
+      .logo {
+        font-family: 'Varela Round', sans-serif;
+        font-size: 170px;
+        fill: #FDFFFC; /* Blanco elegante */
+        letter-spacing: 4px;
+      }
+    </style>
+  </defs>
+  <text x="50%" y="60%" dominant-baseline="middle" text-anchor="middle" class="logo">luumen</text>
+</svg>

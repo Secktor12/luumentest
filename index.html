@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Luumen Landing Page - Cultura y Coleccionismo</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#D4AF37", // Metallic Gold
+                        "primary-glow": "rgba(212, 175, 55, 0.4)",
+                        "background-light": "#F0F0F0",
+                        "background-dark": "#050505",
+                        "surface-dark": "#121212",
+                        "surface-light": "#FFFFFF",
+                        "accent-gold": "#C5A028",
+                        "metallic-gray": "#2A2A2A",
+                    },
+                    fontFamily: {
+                        display: ["'Cinzel'", "serif"],
+                        sans: ["'Inter'", "sans-serif"],
+                        logo: ["'Comfortaa'", "cursive"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                        "xl": "20px",
+                        "2xl": "32px",
+                    },
+                    animation: {
+                        'float': 'float 8s ease-in-out infinite',
+                        'float-delayed': 'float 8s ease-in-out 4s infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'shimmer': 'shimmer 2.5s linear infinite',
+                        'particle-up': 'particleUp 10s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-1500px 0' },
+                            '100%': { backgroundPosition: '1500px 0' }
+                        },
+                        particleUp: {
+                            '0%': { transform: 'translateY(100vh) scale(0)', opacity: '0' },
+                            '20%': { opacity: '1' },
+                            '80%': { opacity: '1' },
+                            '100%': { transform: 'translateY(-20vh) scale(1)', opacity: '0' }
+                        }
+                    }
+                },
+            },
+        };
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&amp;family=Inter:wght@300;400;600&amp;family=Comfortaa:wght@300;400;500&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .metallic-bg {
+            background: radial-gradient(circle at center, #2a2a2a 0%, #050505 100%);
+        }
+
+        .cards-swiper {
+            width: 100%;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            overflow: visible !important;
+            /* Permite que la sombra gigante sobresalga sin cortarse */
+        }
+
+        .cards-swiper .swiper-slide {
+            width: auto;
+            height: clamp(260px, 45vh, 350px);
+            aspect-ratio: 2.2 / 3.3;
+        }
+
+        .quotes-swiper {
+            width: 100%;
+            height: auto;
+            min-height: 160px;
+            max-width: 380px;
+            margin: 0 auto;
+            padding-bottom: 30px;
+        }
+
+        .swiper-pagination-bullet {
+            background: #D4AF37 !important;
+            opacity: 0.4 !important;
+            transition: all 0.3s ease;
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1 !important;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+            transform: scale(1.2);
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #D4AF37 !important;
+            transition: all 0.3s ease;
+            transform: scale(0.65);
+            opacity: 0;
+            /* Oculto por defecto */
+        }
+
+        .quotes-swiper:hover .swiper-button-next,
+        .quotes-swiper:hover .swiper-button-prev {
+            opacity: 0.6;
+            /* Aparecen sutilmente al pasar el mouse por el carrusel */
+        }
+
+        .quotes-swiper .swiper-button-next:hover,
+        .quotes-swiper .swiper-button-prev:hover {
+            opacity: 1;
+            transform: scale(0.75);
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+        }
+
+        .quotes-swiper .swiper-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .quotes-swiper .swiper-slide-shadow-left,
+        .quotes-swiper .swiper-slide-shadow-right,
+        .quotes-swiper .swiper-slide-shadow-top,
+        .quotes-swiper .swiper-slide-shadow-bottom {
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+    </style>
+    <style>
+        body {
+            min-height: 100dvh;
+        }
+
+        .aspect-container {
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Particles */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, #FCF6BA 0%, #D4AF37 50%, transparent 100%);
+            border-radius: 50%;
+            filter: blur(1px);
+            opacity: 0;
+        }
+
+        /* Card Glow Enhancements */
+        .card-glow-enhanced {
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.25), inset 0 0 20px rgba(212, 175, 55, 0.1);
+            transition: box-shadow 0.5s ease;
+        }
+
+        .swiper-slide.group:hover .card-glow-enhanced {
+            box-shadow: 0 0 80px rgba(212, 175, 55, 0.6), inset 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Enhanced Shimmer Layer */
+        .shimmer-layer {
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(255, 255, 255, 0.1) 20%,
+                    rgba(255, 255, 255, 0.5) 50%,
+                    rgba(212, 175, 55, 0.4) 80%,
+                    transparent 100%);
+            background-size: 200% 100%;
+        }
+
+        /* Logo Glow */
+        .logo-glow {
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.8)) drop-shadow(0 0 30px rgba(212, 175, 55, 0.4));
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-dark text-white font-sans antialiased selection:bg-primary selection:text-white transition-colors duration-300 overflow-x-hidden">
+    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <div
+            class="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] mix-blend-screen opacity-40">
+        </div>
+        <div
+            class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[120px] mix-blend-screen opacity-20">
+        </div>
+        <div
+            class="absolute top-1/3 right-10 w-2 h-2 bg-primary rounded-full opacity-80 animate-pulse-slow shadow-[0_0_15px_#D4AF37]">
+        </div>
+        <div class="absolute bottom-1/3 left-10 w-2 h-2 bg-white rounded-full opacity-60 animate-pulse shadow-[0_0_15px_white]"
+            style="animation-delay: 2s;"></div>
+    </div>
+
+    <!-- Golden Particles Container -->
+    <div class="particles-container" id="particles-js"></div>
+
+    <div class="relative z-10 aspect-container px-4 py-4 sm:px-6">
+        <header class="flex flex-col items-center justify-center pt-2 pb-4 shrink-0">
+            <img src="logo.png" alt="Luumen Logo"
+                class="h-16 w-auto logo-glow object-contain transition-all duration-500 hover:scale-105" />
+        </header>
+        <main class="flex-grow flex flex-col items-center justify-center min-h-0">
+            <div class="text-center mb-4 w-full relative z-20 shrink-0">
+                <p class="text-primary/90 text-[9px] font-bold tracking-[0.4em] uppercase mb-1">Coleccionables
+                    Digitales</p>
+                <h2 class="text-xl sm:text-2xl font-display font-medium leading-tight text-gray-200">
+                    Acceso en <br />
+                    <span class="gold-gradient-text font-bold text-2xl sm:text-3xl">Marzo</span>
+                </h2>
+            </div>
+            <div class="swiper cards-swiper mb-8">
+                <div class="swiper-wrapper">
+                    <!-- Carta 1 -->
+                    <div class="swiper-slide group">
+                        <div
+                            class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-primary/50 card-glow-enhanced overflow-hidden relative animate-float">
+                            <img alt="Arte Digital Dorado"
+                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4pgq1rahE39kVBIwaOgKhdk0hMJD4B_haZVs2d5xRme9axWyJqPATNiN2-TY2TtlssSlllOCguuS2mFtFysfe1LwVZfuzAwNWU7UFUfhHwUO0t4FPNoeprsFxcxRWv6liiVaBKRCq4efihY-w_RacRmjN-N5ZauYK84CW6aPHWEAV3NVQEh-TtCfAe7YGX3XSYtmtcUQiQR2DPfQTKuD22mOZ0-D6ypjldLMQiGpIQKGUzgWRgrRsVHU0nmlzuvIkO6Mkx6PeQACn" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80">
+                            </div>
+                            <div class="absolute bottom-6 left-5 right-5 text-center z-20">
+                                <span
+                                    class="inline-block px-2 py-0.5 rounded border border-primary/50 bg-black/60 backdrop-blur-md text-[9px] text-primary uppercase tracking-widest mb-3 shadow-[0_0_10px_rgba(212,175,55,0.5)]">Exclusivo</span>
+                                <h3
+                                    class="text-lg font-display text-white mb-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                                    Cubo Génesis</h3>
+                                <div
+                                    class="h-0.5 w-12 bg-primary mx-auto my-2 rounded-full shadow-[0_0_8px_rgba(212,175,55,0.8)]">
+                                </div>
+                            </div>
+                            <!-- Destello agrandado -->
+                            <div
+                                class="absolute top-0 -inset-full w-[250%] h-[250%] block transform -skew-x-12 shimmer-layer opacity-0 group-hover:opacity-40 transition-opacity duration-300 group-hover:animate-shimmer z-10">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Carta 2 -->
+                    <div class="swiper-slide group">
+                        <div
+                            class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-gray-400/50 card-glow-enhanced overflow-hidden relative animate-float-delayed">
+                            <img alt="Fondo Abstracto 1"
+                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvLlFSpn9J1m_FWNrNSWzuR7AAu6Vb2Fd1Le9v6hnUnfgF4WfPeXUPjFoz5sXAqckXR6CoXLN1aew_jQ2tQd46Wumiq1nPV3eHUEioskY5o4GlaUvrhtQtATsZ6uvG9Qn4aSXpM-o6dzfXOACWWtKKRaJnTrLO23sZxs6DoVezFO1ivD6sCtwggnKfKgFj4NTGABRNrG0fqkZqn9Pb0MpzNLUHKydNqK6e3-L3avfzdio7E3dN1joFIZM1I3jENjrR53vTfXeoME1" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80">
+                            </div>
+                            <div class="absolute bottom-6 left-5 right-5 text-center z-20">
+                                <span
+                                    class="inline-block px-2 py-0.5 rounded border border-gray-400/50 bg-black/60 backdrop-blur-md text-[9px] text-gray-300 uppercase tracking-widest mb-3 shadow-[0_0_10px_rgba(156,163,175,0.5)]">Raro</span>
+                                <h3
+                                    class="text-lg font-display text-white mb-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                                    Esfera del Vacío</h3>
+                                <div
+                                    class="h-0.5 w-12 bg-gray-400 mx-auto my-2 rounded-full shadow-[0_0_8px_rgba(156,163,175,0.8)]">
+                                </div>
+                            </div>
+                            <div class="absolute top-0 -inset-full w-[250%] h-[250%] block transform -skew-x-12 shimmer-layer opacity-0 group-hover:opacity-40 transition-opacity duration-300 group-hover:animate-shimmer z-10"
+                                style="background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 20%, rgba(255,255,255,0.6) 50%, rgba(156,163,175,0.5) 80%, transparent 100%); background-size: 200% 100%;">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Carta 3 -->
+                    <div class="swiper-slide group">
+                        <div
+                            class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-blue-400/50 card-glow-enhanced overflow-hidden relative animate-float">
+                            <img alt="Fondo Abstracto 2"
+                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDwwyHeoo0y7J4d_0nhNi0t4zQGidpdo3L3EopsRR5ZlbFBga4RGOgQ6VUSG7lg0MUC0O8MDODviykFAGkdp50H7FVyulhDqpkGqsDabjsw_xy7deLfvtpbWMmMSoUcYbRkotgqWn9z0mW4x5zzz3jBKUEZay0na66HoDptzakPqyZl4vGFiNXNJuFnSYOpVbYKom0zfYAjtn0P7jnDzh0MnJsPyq_hUayi7TTCEkRU58_3nt2abnhURARawUKMvO7TF6vQPvG47XW" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80">
+                            </div>
+                            <div class="absolute bottom-6 left-5 right-5 text-center z-20">
+                                <span
+                                    class="inline-block px-2 py-0.5 rounded border border-blue-400/50 bg-black/60 backdrop-blur-md text-[9px] text-blue-300 uppercase tracking-widest mb-3 shadow-[0_0_10px_rgba(96,165,250,0.5)]">Épico</span>
+                                <h3
+                                    class="text-lg font-display text-white mb-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                                    Prisma del Tiempo</h3>
+                                <div
+                                    class="h-0.5 w-12 bg-blue-400 mx-auto my-2 rounded-full shadow-[0_0_8px_rgba(96,165,250,0.8)]">
+                                </div>
+                            </div>
+                            <div class="absolute top-0 -inset-full w-[250%] h-[250%] block transform -skew-x-12 shimmer-layer opacity-0 group-hover:opacity-40 transition-opacity duration-300 group-hover:animate-shimmer z-10"
+                                style="background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 20%, rgba(255,255,255,0.6) 50%, rgba(96,165,250,0.5) 80%, transparent 100%); background-size: 200% 100%;">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Carta 4 -->
+                    <div class="swiper-slide group">
+                        <div
+                            class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-green-400/50 card-glow-enhanced overflow-hidden relative animate-float-delayed">
+                            <img alt="Abstracto 3"
+                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 saturate-150 hue-rotate-90 filter"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4pgq1rahE39kVBIwaOgKhdk0hMJD4B_haZVs2d5xRme9axWyJqPATNiN2-TY2TtlssSlllOCguuS2mFtFysfe1LwVZfuzAwNWU7UFUfhHwUO0t4FPNoeprsFxcxRWv6liiVaBKRCq4efihY-w_RacRmjN-N5ZauYK84CW6aPHWEAV3NVQEh-TtCfAe7YGX3XSYtmtcUQiQR2DPfQTKuD22mOZ0-D6ypjldLMQiGpIQKGUzgWRgrRsVHU0nmlzuvIkO6Mkx6PeQACn" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80">
+                            </div>
+                            <div class="absolute bottom-6 left-5 right-5 text-center z-20">
+                                <span
+                                    class="inline-block px-2 py-0.5 rounded border border-green-400/50 bg-black/60 backdrop-blur-md text-[9px] text-green-300 uppercase tracking-widest mb-3 shadow-[0_0_10px_rgba(74,222,128,0.5)]">Mítico</span>
+                                <h3
+                                    class="text-lg font-display text-white mb-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                                    Aura Esmeralda</h3>
+                                <div
+                                    class="h-0.5 w-12 bg-green-400 mx-auto my-2 rounded-full shadow-[0_0_8px_rgba(74,222,128,0.8)]">
+                                </div>
+                            </div>
+                            <div class="absolute top-0 -inset-full w-[250%] h-[250%] block transform -skew-x-12 shimmer-layer opacity-0 group-hover:opacity-40 transition-opacity duration-300 group-hover:animate-shimmer z-10"
+                                style="background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 20%, rgba(255,255,255,0.6) 50%, rgba(74,222,128,0.5) 80%, transparent 100%); background-size: 200% 100%;">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Carta 5 -->
+                    <div class="swiper-slide group">
+                        <div
+                            class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-purple-400/50 card-glow-enhanced overflow-hidden relative animate-float">
+                            <img alt="Abstracto 4"
+                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 saturate-200 hue-rotate-180 filter"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDwwyHeoo0y7J4d_0nhNi0t4zQGidpdo3L3EopsRR5ZlbFBga4RGOgQ6VUSG7lg0MUC0O8MDODviykFAGkdp50H7FVyulhDqpkGqsDabjsw_xy7deLfvtpbWMmMSoUcYbRkotgqWn9z0mW4x5zzz3jBKUEZay0na66HoDptzakPqyZl4vGFiNXNJuFnSYOpVbYKom0zfYAjtn0P7jnDzh0MnJsPyq_hUayi7TTCEkRU58_3nt2abnhURARawUKMvO7TF6vQPvG47XW" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80">
+                            </div>
+                            <div class="absolute bottom-6 left-5 right-5 text-center z-20">
+                                <span
+                                    class="inline-block px-2 py-0.5 rounded border border-purple-400/50 bg-black/60 backdrop-blur-md text-[9px] text-purple-300 uppercase tracking-widest mb-3 shadow-[0_0_10px_rgba(192,132,252,0.5)]">Legendario</span>
+                                <h3
+                                    class="text-lg font-display text-white mb-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                                    Nova Púrpura</h3>
+                                <div
+                                    class="h-0.5 w-12 bg-purple-400 mx-auto my-2 rounded-full shadow-[0_0_8px_rgba(192,132,252,0.8)]">
+                                </div>
+                            </div>
+                            <div class="absolute top-0 -inset-full w-[250%] h-[250%] block transform -skew-x-12 shimmer-layer opacity-0 group-hover:opacity-40 transition-opacity duration-300 group-hover:animate-shimmer z-10"
+                                style="background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 20%, rgba(255,255,255,0.6) 50%, rgba(192,132,252,0.5) 80%, transparent 100%); background-size: 200% 100%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full max-w-sm shrink-0 mt-4 mb-4">
+                <div class="text-center mb-4">
+                    <p class="text-sm font-medium tracking-wide">
+                        <span class="text-primary font-bold animate-pulse">Cupo limitado.</span> <span
+                            class="text-gray-300">Solo los primeros tendrán acceso a la colección fundacional.</span>
+                    </p>
+                </div>
+                <div class="w-full relative group">
+                    <div
+                        class="absolute -inset-0.5 bg-gradient-to-r from-primary/50 to-accent-gold/50 rounded-xl opacity-40 blur transition duration-300 group-hover:opacity-80">
+                    </div>
+                    <div
+                        class="relative flex items-center bg-surface-dark rounded-xl p-1.5 shadow-2xl border border-white/10">
+                        <div class="pl-4 pr-2">
+                            <span class="material-symbols-outlined text-gray-500 text-[20px]">mail</span>
+                        </div>
+                        <input
+                            class="w-full bg-transparent border-none text-white placeholder-gray-500 focus:ring-0 text-sm py-3 px-1"
+                            placeholder="tu@correo.com" type="email" />
+                        <button
+                            class="bg-primary text-black font-bold text-xs uppercase tracking-wide py-3 px-5 rounded-lg hover:bg-accent-gold transition-all shadow-[0_0_15px_rgba(212,175,55,0.4)] transform active:scale-95 duration-150 whitespace-nowrap">
+                            Notificarme
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="w-full text-center px-4 relative z-20 shrink-0 pb-4">
+            <div class="border-t border-white/10 w-24 mx-auto mb-6"></div>
+
+            <div class="swiper quotes-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Filosofía 1 -->
+                    <div class="swiper-slide">
+                        <p class="font-display italic text-lg text-gray-300 leading-relaxed max-w-xs block">
+                            "Coleccionar es rescatar la belleza del tiempo."
+                        </p>
+                        <p class="text-xs text-gray-500 font-serif leading-relaxed mt-4 max-w-xs block">
+                            Como decía Walter Benjamin: <br />
+                            <span class="italic text-gray-400">"En todo objeto coleccionado, el pasado encuentra su
+                                refugio más íntimo."</span>
+                        </p>
+                    </div>
+                    <!-- Filosofía 2 -->
+                    <div class="swiper-slide">
+                        <p class="font-display italic text-lg text-primary leading-relaxed max-w-xs block">
+                            "El único límite para nuestros logros de mañana serán nuestras dudas de hoy."
+                        </p>
+                        <p class="text-xs text-gray-500 font-serif leading-relaxed mt-4 block">
+                            Franklin D. Roosevelt
+                        </p>
+                    </div>
+                    <!-- Filosofía 3 -->
+                    <div class="swiper-slide">
+                        <p class="font-display italic text-lg text-gray-300 leading-relaxed max-w-xs block">
+                            "No esperes a que las condiciones sean perfectas para empezar. El comienzo hace que las
+                            condiciones sean perfectas."
+                        </p>
+                        <p class="text-xs text-gray-500 font-serif leading-relaxed mt-4 block">
+                            Alan Cohen
+                        </p>
+                    </div>
+                    <!-- Filosofía 4 -->
+                    <div class="swiper-slide">
+                        <p class="font-display italic text-lg text-accent-gold leading-relaxed max-w-xs block">
+                            "Cree que puedes y estarás a mitad de camino."
+                        </p>
+                        <p class="text-xs text-gray-500 font-serif leading-relaxed mt-4 block">
+                            Theodore Roosevelt
+                        </p>
+                    </div>
+                    <!-- Filosofía 5 -->
+                    <div class="swiper-slide">
+                        <p class="font-display italic text-lg text-gray-300 leading-relaxed max-w-xs block">
+                            "Tu tiempo es limitado, así que no lo desperdicies viviendo la vida de alguien más."
+                        </p>
+                        <p class="text-xs text-gray-500 font-serif leading-relaxed mt-4 block">
+                            Steve Jobs
+                        </p>
+                    </div>
+                    <!-- Filosofía 6 -->
+                    <div class="swiper-slide">
+                        <p class="font-display italic text-lg text-white leading-relaxed max-w-xs block">
+                            "El éxito no es final, el fracaso no es fatal: lo que cuenta es el valor para continuar."
+                        </p>
+                        <p class="text-xs text-gray-500 font-serif leading-relaxed mt-4 block">
+                            Winston Churchill
+                        </p>
+                    </div>
+                    <!-- Filosofía 7 -->
+                    <div class="swiper-slide">
+                        <p class="font-display italic text-lg text-primary leading-relaxed max-w-xs block">
+                            "Amarte a ti mismo ahora mismo, tal como eres, es darte el cielo a ti mismo."
+                        </p>
+                        <p class="text-xs text-gray-500 font-serif leading-relaxed mt-4 block">
+                            Alan Watts
+                        </p>
+                    </div>
+                    <!-- Filosofía 8 -->
+                    <div class="swiper-slide">
+                        <p class="font-display italic text-lg text-gray-300 leading-relaxed max-w-xs block">
+                            "Si puedes soñarlo, puedes hacerlo. Recuerda que todo esto comenzó con un ratón."
+                        </p>
+                        <p class="text-xs text-gray-500 font-serif leading-relaxed mt-4 block">
+                            Walt Disney
+                        </p>
+                    </div>
+                    <!-- Filosofía 9 -->
+                    <div class="swiper-slide">
+                        <p class="font-display italic text-lg text-accent-gold leading-relaxed max-w-xs block">
+                            "La vida es 10% lo que te sucede y 90% cómo reaccionas a ello."
+                        </p>
+                        <p class="text-xs text-gray-500 font-serif leading-relaxed mt-4 block">
+                            Charles R. Swindoll
+                        </p>
+                    </div>
+                    <!-- Filosofía 10 -->
+                    <div class="swiper-slide">
+                        <p class="font-display italic text-lg text-gray-300 leading-relaxed max-w-xs block">
+                            "Haz lo que puedas, con lo que tengas, donde estés."
+                        </p>
+                        <p class="text-xs text-gray-500 font-serif leading-relaxed mt-4 block">
+                            Theodore Roosevelt
+                        </p>
+                    </div>
+                    <!-- Filosofía 11 -->
+                    <div class="swiper-slide">
+                        <p class="font-display italic text-lg text-primary leading-relaxed max-w-xs block">
+                            "Rodéate de personas que iluminen tu camino y te ayuden a volar más alto."
+                        </p>
+                        <p class="text-xs text-gray-500 font-serif leading-relaxed mt-4 block">
+                            Oprah Winfrey
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Controles de navegación y paginación interactivas -->
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        document.documentElement.classList.add('dark');
+
+        // Swiper para las cartas principales (Efecto Coverflow)
+        const cardsSwiper = new Swiper('.cards-swiper', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            loop: true,
+            coverflowEffect: {
+                rotate: 20, // Grados de rotación para que se vean de lado
+                stretch: 0,
+                depth: 250, // Profundidad para el efecto 3D
+                modifier: 1,
+                slideShadows: true,
+            }
+        });
+
+        // Swiper para las frases (Efecto Cube)
+        const quotesSwiper = new Swiper('.quotes-swiper', {
+            effect: 'cube',
+            grabCursor: true,
+            loop: true,
+            cubeEffect: {
+                shadow: false,
+                slideShadows: true,
+                shadowOffset: 20,
+                shadowScale: 0.94,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 4500,
+                disableOnInteraction: false,
+            }
+        });
+        // Generación de partículas de polvo dorado
+        function createParticles() {
+            const container = document.getElementById('particles-js');
+            const particleCount = 40; // Número de partículas
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle', 'animate-particle-up');
+
+                // Propiedades aleatorias para variedad
+                const size = Math.random() * 4 + 1; // 1px a 5px
+                const left = Math.random() * 100; // 0% a 100% actross screen
+                const delay = Math.random() * 10; // 0s a 10s wait
+                const duration = Math.random() * 15 + 10; // 10s a 25s for slow float
+
+                // Aplicar estilos
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${left}%`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+
+                container.appendChild(particle);
+            }
+        }
+
+        // Ejecutar al cargar
+        document.addEventListener('DOMContentLoaded', createParticles);
+    </script>
+</body>
+
+</html>
