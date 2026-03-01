@@ -66,17 +66,16 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
+        /* Ocultar barra de desplazamiento globalmente */
         ::-webkit-scrollbar {
-            width: 8px;
+            display: none;
         }
 
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
+        * {
+            -ms-overflow-style: none;
+            /* IE y Edge */
+            scrollbar-width: none;
+            /* Firefox */
         }
 
         .gold-gradient-text {
@@ -100,15 +99,23 @@
 
         @media (min-width: 640px) {
             .cards-swiper {
-                padding-top: 30px;
-                padding-bottom: 30px;
+                padding-top: 15px;
+                padding-bottom: 15px;
             }
         }
 
         .cards-swiper .swiper-slide {
             width: auto;
-            height: clamp(230px, 42vh, 350px);
+            height: clamp(200px, 35vh, 260px);
+            /* Más compactas para móvil */
             aspect-ratio: 2.2 / 3.3;
+        }
+
+        @media (min-width: 640px) {
+            .cards-swiper .swiper-slide {
+                height: clamp(210px, 35vh, 280px);
+                /* Cartas más pequeñas en PC para no abarcar toda la pantalla */
+            }
         }
 
         .quotes-swiper {
@@ -116,8 +123,8 @@
             height: auto;
             max-width: 380px;
             margin: 0 auto;
-            padding-bottom: 25px;
-            /* Reducido para acercar los puntos al borde inferior */
+            padding-bottom: 12px;
+            /* Ultra reducido para que los puntos peguen abajo */
         }
 
         .swiper-pagination-bullet {
@@ -211,8 +218,8 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding-bottom: env(safe-area-inset-bottom, 5px);
-            /* Fix for iOS home bar */
+            padding-bottom: 0px;
+            /* Fix extra scroll bar issue, iOS safe area moved to parent if needed */
         }
 
         @media (min-width: 640px) {
@@ -220,6 +227,12 @@
                 height: auto;
                 max-height: none;
                 min-height: 100vh;
+                justify-content: center;
+                /* En PC junta todo hacia el centro */
+                gap: 1.5rem;
+                /* Separación compacta */
+                padding-top: 1rem;
+                padding-bottom: 1rem;
             }
         }
 
@@ -333,10 +346,10 @@
             </div>
 
             <img src="logo.png" alt="Luumen Logo"
-                class="h-9 sm:h-16 w-auto logo-glow object-contain transition-all duration-500 hover:scale-105" />
+                class="h-9 sm:h-12 w-auto logo-glow object-contain transition-all duration-500 hover:scale-105" />
         </header>
-        <main class="flex-grow flex flex-col items-center justify-center min-h-0">
-            <div class="text-center mb-1 sm:mb-4 w-full relative z-20 shrink-0">
+        <main class="flex-grow sm:flex-grow-0 flex flex-col items-center justify-center min-h-0 w-full">
+            <div class="text-center mb-1 sm:mb-2 w-full relative z-20 shrink-0">
                 <p data-i18n="subtitle"
                     class="text-primary/90 text-[8px] sm:text-[9px] font-bold tracking-[0.4em] uppercase mb-1">
                     Coleccionables Digitales</p>
@@ -475,8 +488,8 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full max-w-sm shrink-0 mt-1 mb-1 sm:mt-2 sm:mb-4">
-                <div class="text-center mb-1 sm:mb-4">
+            <div class="w-full max-w-sm shrink-0 mt-1 mb-1 sm:mt-1 sm:mb-2">
+                <div class="text-center mb-1 sm:mb-2">
                     <p class="text-[11px] sm:text-sm font-medium tracking-wide">
                         <span data-i18n="fomo_highlight" class="text-primary font-bold animate-pulse">Cupo
                             limitado.</span> <span data-i18n="fomo_text" class="text-gray-300">Solo los primeros tendrán
@@ -504,7 +517,7 @@
             </div>
         </main>
         <footer class="w-full text-center px-4 relative z-20 shrink-0 pb-0">
-            <div class="border-t border-white/10 w-24 mx-auto mb-4"></div>
+            <div class="border-t border-white/10 w-24 mx-auto mb-2 sm:mb-3"></div>
 
             <div class="swiper quotes-swiper">
                 <div class="swiper-wrapper">
