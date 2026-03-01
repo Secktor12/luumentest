@@ -104,16 +104,14 @@
 
         .cards-swiper .swiper-slide {
             width: auto;
-            height: 100%;
-            /* Hereda la altura máxima exacta disponible del main */
-            max-height: 70vh;
-            /* Seguridad flex */
+            height: clamp(280px, 45vh, 420px);
             max-width: 90vw;
             aspect-ratio: 2.2 / 3.3;
         }
 
         @media (min-width: 640px) {
             .cards-swiper .swiper-slide {
+                height: 100%;
                 max-height: 75vh;
             }
         }
@@ -346,7 +344,9 @@
             <img src="logo.png" alt="Luumen Logo"
                 class="h-9 sm:h-16 w-auto logo-glow object-contain transition-all duration-500 hover:scale-105" />
 
-            <div class="text-center mt-1 sm:mt-2 w-full relative z-20 shrink-0">
+        </header>
+        <main class="flex-grow flex flex-col items-center justify-between w-full my-0 sm:my-2 min-h-0 relative">
+            <div class="text-center mt-0 sm:mt-1 w-full relative z-20 shrink-0">
                 <p data-i18n="subtitle"
                     class="text-primary/90 text-[8px] sm:text-[9px] font-bold tracking-[0.4em] uppercase mb-1">
                     Coleccionables Digitales</p>
@@ -355,9 +355,9 @@
                     <span data-i18n="title_month" class="gold-gradient-text font-bold text-xl sm:text-3xl">Marzo</span>
                 </h2>
             </div>
-        </header>
-        <main class="flex-grow relative min-h-0 w-full my-1 sm:my-2">
-            <div class="swiper cards-swiper absolute inset-0">
+
+            <div
+                class="swiper cards-swiper flex-grow w-full relative flex flex-col justify-center items-center min-h-0">
                 <div class="swiper-wrapper">
                     <!-- Carta 1 -->
                     <div class="swiper-slide group">
@@ -487,9 +487,7 @@
                     </div>
                 </div>
             </div>
-        </main>
-        <footer class="w-full text-center px-4 relative z-20 shrink-0 pb-0 flex flex-col items-center">
-            <div class="w-full max-w-sm shrink-0 mb-3 sm:mb-5 mx-auto">
+            <div class="w-full max-w-sm shrink-0 mb-1 mt-1 sm:mt-3 sm:mb-2 mx-auto relative z-20 px-2 sm:px-0">
                 <div class="text-center mb-1 sm:mb-4">
                     <p class="text-[11px] sm:text-sm font-medium tracking-wide">
                         <span data-i18n="fomo_highlight" class="text-primary font-bold animate-pulse">Cupo
@@ -516,8 +514,9 @@
                     </div>
                 </div>
             </div>
-
-            <div class="border-t border-white/10 w-24 mx-auto mb-2 sm:mb-3"></div>
+        </main>
+        <footer class="w-full text-center px-4 relative z-20 shrink-0 pb-0 flex flex-col items-center">
+            <div class="border-t border-white/10 w-24 mx-auto mb-2 sm:mb-3 mt-1 sm:mt-0"></div>
 
             <div class="swiper quotes-swiper">
                 <div class="swiper-wrapper">
