@@ -104,9 +104,20 @@
 
         .cards-swiper .swiper-slide {
             width: auto;
-            height: clamp(320px, 58vh, 500px);
-            max-width: 92vw;
-            aspect-ratio: 2.2 / 3.3;
+            height: clamp(350px, 100%, 80vh);
+            max-width: none;
+            /* Removing previous 92vw limit so height drives scale infinitely */
+            aspect-ratio: 2 / 3.4;
+            /* Slightly taller proportion for narrow displays */
+        }
+
+        @media (min-width: 640px) {
+            .cards-swiper .swiper-slide {
+                max-width: 90vw;
+                height: 100%;
+                max-height: 75vh;
+                aspect-ratio: 2.2 / 3.3;
+            }
         }
 
         @media (min-width: 640px) {
@@ -345,19 +356,18 @@
                 class="h-9 sm:h-16 w-auto logo-glow object-contain transition-all duration-500 hover:scale-105" />
 
         </header>
-        <main class="flex-1 flex flex-col items-center justify-between w-full my-0 sm:my-2 min-h-0 relative">
-            <div class="text-center mt-0 sm:mt-1 w-full relative z-20 shrink-0">
+        <main class="flex-1 flex flex-col items-center justify-between w-full my-0 sm:my-2 min-h-0 relative px-0">
+            <div class="text-center mt-1 w-full relative z-20 shrink-0">
                 <p data-i18n="subtitle"
-                    class="text-primary/90 text-[8px] sm:text-[9px] font-bold tracking-[0.4em] uppercase mb-1">
+                    class="text-primary/90 text-[8px] sm:text-[9px] font-bold tracking-[0.4em] uppercase mb-0">
                     Coleccionables Digitales</p>
-                <h2 class="text-lg sm:text-2xl font-display font-medium leading-tight text-gray-200">
+                <h2 class="text-lg sm:text-2xl font-display font-medium leading-tight text-gray-200 mt-0">
                     <span data-i18n="title_access">Acceso en</span> <br />
                     <span data-i18n="title_month" class="gold-gradient-text font-bold text-xl sm:text-3xl">Marzo</span>
                 </h2>
             </div>
-
             <div
-                class="swiper cards-swiper w-full relative sm:flex-1 sm:min-h-0 sm:flex sm:flex-col sm:justify-center sm:items-center">
+                class="swiper cards-swiper flex-1 h-full w-full relative sm:min-h-0 sm:flex sm:flex-col sm:justify-center sm:items-center">
                 <div class="swiper-wrapper">
                     <!-- Carta 1 -->
                     <div class="swiper-slide group">
@@ -487,7 +497,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full max-w-sm shrink-0 mb-1 mt-1 sm:mt-3 sm:mb-2 mx-auto relative z-20 px-2 sm:px-0">
+            <div class="w-full max-w-sm shrink-0 mb-1 mt-0 sm:mt-3 sm:mb-2 mx-auto relative z-20 px-2 sm:px-0">
                 <div class="text-center mb-1 sm:mb-4">
                     <p class="text-[11px] sm:text-sm font-medium tracking-wide">
                         <span data-i18n="fomo_highlight" class="text-primary font-bold animate-pulse">Cupo
