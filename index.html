@@ -113,8 +113,8 @@
 
         @media (min-width: 640px) {
             .cards-swiper .swiper-slide {
-                height: clamp(210px, 35vh, 280px);
-                /* Cartas más pequeñas en PC para no abarcar toda la pantalla */
+                height: clamp(230px, 42vh, 340px);
+                /* Cartas equilibradas en PC */
             }
         }
 
@@ -227,12 +227,10 @@
                 height: auto;
                 max-height: none;
                 min-height: 100vh;
-                justify-content: center;
-                /* En PC junta todo hacia el centro */
-                gap: 1.5rem;
-                /* Separación compacta */
-                padding-top: 1rem;
-                padding-bottom: 1rem;
+                justify-content: space-between;
+                /* Distribución natural de espacios */
+                padding-top: 4vh;
+                padding-bottom: 4vh;
             }
         }
 
@@ -346,10 +344,10 @@
             </div>
 
             <img src="logo.png" alt="Luumen Logo"
-                class="h-9 sm:h-12 w-auto logo-glow object-contain transition-all duration-500 hover:scale-105" />
+                class="h-9 sm:h-16 w-auto logo-glow object-contain transition-all duration-500 hover:scale-105" />
         </header>
-        <main class="flex-grow sm:flex-grow-0 flex flex-col items-center justify-center min-h-0 w-full">
-            <div class="text-center mb-1 sm:mb-2 w-full relative z-20 shrink-0">
+        <main class="flex-grow flex flex-col items-center justify-center min-h-0 w-full mb-2 sm:mb-6">
+            <div class="text-center mb-1 sm:mb-4 w-full relative z-20 shrink-0">
                 <p data-i18n="subtitle"
                     class="text-primary/90 text-[8px] sm:text-[9px] font-bold tracking-[0.4em] uppercase mb-1">
                     Coleccionables Digitales</p>
@@ -488,8 +486,8 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full max-w-sm shrink-0 mt-1 mb-1 sm:mt-1 sm:mb-2">
-                <div class="text-center mb-1 sm:mb-2">
+            <div class="w-full max-w-sm shrink-0 mt-1 mb-1 sm:mt-2 sm:mb-4">
+                <div class="text-center mb-1 sm:mb-4">
                     <p class="text-[11px] sm:text-sm font-medium tracking-wide">
                         <span data-i18n="fomo_highlight" class="text-primary font-bold animate-pulse">Cupo
                             limitado.</span> <span data-i18n="fomo_text" class="text-gray-300">Solo los primeros tendrán
