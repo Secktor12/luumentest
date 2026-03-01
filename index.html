@@ -247,17 +247,57 @@
     <div class="particles-container" id="particles-js"></div>
 
     <div class="relative z-10 aspect-container px-4 py-4 sm:px-6">
-        <header class="flex flex-col items-center justify-center pt-2 pb-4 shrink-0">
+        <header class="flex flex-col items-center justify-center pt-2 pb-4 shrink-0 relative">
+
+            <!-- Language Switcher (Marketing optimized) -->
+            <div class="absolute right-0 top-2 sm:right-4 z-50">
+                <div class="relative group" id="lang-selector">
+                    <button type="button"
+                        class="flex items-center gap-1.5 px-3 py-1.5 bg-black/40 backdrop-blur-md border border-white/10 rounded-full text-xs font-semibold text-gray-300 hover:text-primary hover:border-primary/50 transition-all shadow-lg hover:shadow-[0_0_15px_rgba(212,175,55,0.3)]">
+                        <span class="material-symbols-outlined text-[16px]">language</span>
+                        <span id="current-lang-text" class="uppercase">ES</span>
+                        <span
+                            class="material-symbols-outlined text-[16px] group-hover:rotate-180 transition-transform duration-300">expand_more</span>
+                    </button>
+                    <!-- Dropdown Content -->
+                    <div
+                        class="absolute right-0 mt-2 w-32 bg-[#121212] border border-white/10 rounded-xl shadow-2xl overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right group-hover:scale-100 scale-95">
+                        <ul class="py-1 text-sm text-gray-300">
+                            <li><button
+                                    class="w-full text-left px-4 py-2 hover:bg-white/5 hover:text-primary transition-colors flex items-center justify-between"
+                                    onclick="changeLanguage('es')">Español <span
+                                        class="text-[10px] opacity-50">ES</span></button></li>
+                            <li><button
+                                    class="w-full text-left px-4 py-2 hover:bg-white/5 hover:text-primary transition-colors flex items-center justify-between"
+                                    onclick="changeLanguage('en')">English <span
+                                        class="text-[10px] opacity-50">EN</span></button></li>
+                            <li><button
+                                    class="w-full text-left px-4 py-2 hover:bg-white/5 hover:text-primary transition-colors flex items-center justify-between"
+                                    onclick="changeLanguage('fr')">Français <span
+                                        class="text-[10px] opacity-50">FR</span></button></li>
+                            <li><button
+                                    class="w-full text-left px-4 py-2 hover:bg-white/5 hover:text-primary transition-colors flex items-center justify-between"
+                                    onclick="changeLanguage('de')">Deutsch <span
+                                        class="text-[10px] opacity-50">DE</span></button></li>
+                            <li><button
+                                    class="w-full text-left px-4 py-2 hover:bg-white/5 hover:text-primary transition-colors flex items-center justify-between"
+                                    onclick="changeLanguage('zh')">中文 <span
+                                        class="text-[10px] opacity-50">ZH</span></button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
             <img src="logo.png" alt="Luumen Logo"
                 class="h-16 w-auto logo-glow object-contain transition-all duration-500 hover:scale-105" />
         </header>
         <main class="flex-grow flex flex-col items-center justify-center min-h-0">
             <div class="text-center mb-4 w-full relative z-20 shrink-0">
-                <p class="text-primary/90 text-[9px] font-bold tracking-[0.4em] uppercase mb-1">Coleccionables
-                    Digitales</p>
+                <p data-i18n="subtitle" class="text-primary/90 text-[9px] font-bold tracking-[0.4em] uppercase mb-1">
+                    Coleccionables Digitales</p>
                 <h2 class="text-xl sm:text-2xl font-display font-medium leading-tight text-gray-200">
-                    Acceso en <br />
-                    <span class="gold-gradient-text font-bold text-2xl sm:text-3xl">Marzo</span>
+                    <span data-i18n="title_access">Acceso en</span> <br />
+                    <span data-i18n="title_month" class="gold-gradient-text font-bold text-2xl sm:text-3xl">Marzo</span>
                 </h2>
             </div>
             <div class="swiper cards-swiper mb-8">
@@ -273,9 +313,9 @@
                                 class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80">
                             </div>
                             <div class="absolute bottom-6 left-5 right-5 text-center z-20">
-                                <span
+                                <span data-i18n="rarity_exclusive"
                                     class="inline-block px-2 py-0.5 rounded border border-primary/50 bg-black/60 backdrop-blur-md text-[9px] text-primary uppercase tracking-widest mb-3 shadow-[0_0_10px_rgba(212,175,55,0.5)]">Exclusivo</span>
-                                <h3
+                                <h3 data-i18n="card_1_title"
                                     class="text-lg font-display text-white mb-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                                     Cubo Génesis</h3>
                                 <div
@@ -289,19 +329,19 @@
                         </div>
                     </div>
                     <!-- Carta 2 -->
-                    <div class="swiper-slide group">
+                    <div class="swiper-slide group animate-float-delayed">
                         <div
-                            class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-gray-400/50 card-glow-enhanced overflow-hidden relative animate-float-delayed">
+                            class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-gray-400/50 card-glow-enhanced overflow-hidden relative">
                             <img alt="Fondo Abstracto 1"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvLlFSpn9J1m_FWNrNSWzuR7AAu6Vb2Fd1Le9v6hnUnfgF4WfPeXUPjFoz5sXAqckXR6CoXLN1aew_jQ2tQd46Wumiq1nPV3eHUEioskY5o4GlaUvrhtQtATsZ6uvG9Qn4aSXpM-o6dzfXOACWWtKKRaJnTrLO23sZxs6DoVezFO1ivD6sCtwggnKfKgFj4NTGABRNrG0fqkZqn9Pb0MpzNLUHKydNqK6e3-L3avfzdio7E3dN1joFIZM1I3jENjrR53vTfXeoME1" />
+                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 grayscale opacity-80"
+                                src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" />
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80">
                             </div>
                             <div class="absolute bottom-6 left-5 right-5 text-center z-20">
-                                <span
+                                <span data-i18n="rarity_rare"
                                     class="inline-block px-2 py-0.5 rounded border border-gray-400/50 bg-black/60 backdrop-blur-md text-[9px] text-gray-300 uppercase tracking-widest mb-3 shadow-[0_0_10px_rgba(156,163,175,0.5)]">Raro</span>
-                                <h3
+                                <h3 data-i18n="card_2_title"
                                     class="text-lg font-display text-white mb-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                                     Esfera del Vacío</h3>
                                 <div
@@ -324,9 +364,9 @@
                                 class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80">
                             </div>
                             <div class="absolute bottom-6 left-5 right-5 text-center z-20">
-                                <span
+                                <span data-i18n="rarity_epic"
                                     class="inline-block px-2 py-0.5 rounded border border-blue-400/50 bg-black/60 backdrop-blur-md text-[9px] text-blue-300 uppercase tracking-widest mb-3 shadow-[0_0_10px_rgba(96,165,250,0.5)]">Épico</span>
-                                <h3
+                                <h3 data-i18n="card_3_title"
                                     class="text-lg font-display text-white mb-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                                     Prisma del Tiempo</h3>
                                 <div
@@ -349,9 +389,9 @@
                                 class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80">
                             </div>
                             <div class="absolute bottom-6 left-5 right-5 text-center z-20">
-                                <span
+                                <span data-i18n="rarity_mythic"
                                     class="inline-block px-2 py-0.5 rounded border border-green-400/50 bg-black/60 backdrop-blur-md text-[9px] text-green-300 uppercase tracking-widest mb-3 shadow-[0_0_10px_rgba(74,222,128,0.5)]">Mítico</span>
-                                <h3
+                                <h3 data-i18n="card_4_title"
                                     class="text-lg font-display text-white mb-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                                     Aura Esmeralda</h3>
                                 <div
@@ -374,9 +414,9 @@
                                 class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80">
                             </div>
                             <div class="absolute bottom-6 left-5 right-5 text-center z-20">
-                                <span
+                                <span data-i18n="rarity_legendary"
                                     class="inline-block px-2 py-0.5 rounded border border-purple-400/50 bg-black/60 backdrop-blur-md text-[9px] text-purple-300 uppercase tracking-widest mb-3 shadow-[0_0_10px_rgba(192,132,252,0.5)]">Legendario</span>
-                                <h3
+                                <h3 data-i18n="card_5_title"
                                     class="text-lg font-display text-white mb-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                                     Nova Púrpura</h3>
                                 <div
@@ -393,8 +433,9 @@
             <div class="w-full max-w-sm shrink-0 mt-4 mb-4">
                 <div class="text-center mb-4">
                     <p class="text-sm font-medium tracking-wide">
-                        <span class="text-primary font-bold animate-pulse">Cupo limitado.</span> <span
-                            class="text-gray-300">Solo los primeros tendrán acceso a la colección fundacional.</span>
+                        <span data-i18n="fomo_highlight" class="text-primary font-bold animate-pulse">Cupo
+                            limitado.</span> <span data-i18n="fomo_text" class="text-gray-300">Solo los primeros tendrán
+                            acceso a la colección fundacional.</span>
                     </p>
                 </div>
                 <div class="w-full relative group">
@@ -406,11 +447,11 @@
                         <div class="pl-4 pr-2">
                             <span class="material-symbols-outlined text-gray-500 text-[20px]">mail</span>
                         </div>
-                        <input
-                            class="w-full bg-transparent border-none text-white placeholder-gray-500 focus:ring-0 text-sm py-3 px-1"
+                        <input id="email-input"
+                            class="w-full bg-transparent border-none text-white placeholder-gray-500 focus:ring-0 text-sm py-3 px-1 transition-colors"
                             placeholder="tu@correo.com" type="email" />
-                        <button
-                            class="bg-primary text-black font-bold text-xs uppercase tracking-wide py-3 px-5 rounded-lg hover:bg-accent-gold transition-all shadow-[0_0_15px_rgba(212,175,55,0.4)] transform active:scale-95 duration-150 whitespace-nowrap">
+                        <button id="notify-button" data-i18n="notify_btn"
+                            class="bg-primary text-black font-bold text-[11px] sm:text-xs uppercase tracking-wide py-3 px-4 sm:px-5 rounded-lg hover:bg-accent-gold transition-all shadow-[0_0_15px_rgba(212,175,55,0.4)] transform active:scale-95 duration-150 whitespace-nowrap">
                             Notificarme
                         </button>
                     </div>
@@ -422,20 +463,22 @@
 
             <div class="swiper quotes-swiper">
                 <div class="swiper-wrapper">
-                    <!-- Filosofía 1 -->
+                    <!-- Filosofías (Traducidas dinámicamente) -->
                     <div class="swiper-slide">
-                        <p class="font-display italic text-lg text-gray-300 leading-relaxed max-w-xs block">
+                        <p data-i18n="quote_1"
+                            class="font-display italic text-lg text-gray-300 leading-relaxed max-w-xs block">
                             "Coleccionar es rescatar la belleza del tiempo."
                         </p>
                         <p class="text-xs text-gray-500 font-serif leading-relaxed mt-4 max-w-xs block">
-                            Como decía Walter Benjamin: <br />
-                            <span class="italic text-gray-400">"En todo objeto coleccionado, el pasado encuentra su
-                                refugio más íntimo."</span>
+                            <span data-i18n="quote_1_author_prefix">Como decía</span> Walter Benjamin: <br />
+                            <span data-i18n="quote_1_sub" class="italic text-gray-400">"En todo objeto coleccionado, el
+                                pasado encuentra su refugio más íntimo."</span>
                         </p>
                     </div>
                     <!-- Filosofía 2 -->
                     <div class="swiper-slide">
-                        <p class="font-display italic text-lg text-primary leading-relaxed max-w-xs block">
+                        <p data-i18n="quote_2"
+                            class="font-display italic text-lg text-primary leading-relaxed max-w-xs block">
                             "El único límite para nuestros logros de mañana serán nuestras dudas de hoy."
                         </p>
                         <p class="text-xs text-gray-500 font-serif leading-relaxed mt-4 block">
@@ -444,7 +487,8 @@
                     </div>
                     <!-- Filosofía 3 -->
                     <div class="swiper-slide">
-                        <p class="font-display italic text-lg text-gray-300 leading-relaxed max-w-xs block">
+                        <p data-i18n="quote_3"
+                            class="font-display italic text-lg text-gray-300 leading-relaxed max-w-xs block">
                             "No esperes a que las condiciones sean perfectas para empezar. El comienzo hace que las
                             condiciones sean perfectas."
                         </p>
@@ -454,7 +498,8 @@
                     </div>
                     <!-- Filosofía 4 -->
                     <div class="swiper-slide">
-                        <p class="font-display italic text-lg text-accent-gold leading-relaxed max-w-xs block">
+                        <p data-i18n="quote_4"
+                            class="font-display italic text-lg text-accent-gold leading-relaxed max-w-xs block">
                             "Cree que puedes y estarás a mitad de camino."
                         </p>
                         <p class="text-xs text-gray-500 font-serif leading-relaxed mt-4 block">
@@ -463,7 +508,8 @@
                     </div>
                     <!-- Filosofía 5 -->
                     <div class="swiper-slide">
-                        <p class="font-display italic text-lg text-gray-300 leading-relaxed max-w-xs block">
+                        <p data-i18n="quote_5"
+                            class="font-display italic text-lg text-gray-300 leading-relaxed max-w-xs block">
                             "Tu tiempo es limitado, así que no lo desperdicies viviendo la vida de alguien más."
                         </p>
                         <p class="text-xs text-gray-500 font-serif leading-relaxed mt-4 block">
@@ -472,7 +518,8 @@
                     </div>
                     <!-- Filosofía 6 -->
                     <div class="swiper-slide">
-                        <p class="font-display italic text-lg text-white leading-relaxed max-w-xs block">
+                        <p data-i18n="quote_6"
+                            class="font-display italic text-lg text-white leading-relaxed max-w-xs block">
                             "El éxito no es final, el fracaso no es fatal: lo que cuenta es el valor para continuar."
                         </p>
                         <p class="text-xs text-gray-500 font-serif leading-relaxed mt-4 block">
@@ -481,7 +528,8 @@
                     </div>
                     <!-- Filosofía 7 -->
                     <div class="swiper-slide">
-                        <p class="font-display italic text-lg text-primary leading-relaxed max-w-xs block">
+                        <p data-i18n="quote_7"
+                            class="font-display italic text-lg text-primary leading-relaxed max-w-xs block">
                             "Amarte a ti mismo ahora mismo, tal como eres, es darte el cielo a ti mismo."
                         </p>
                         <p class="text-xs text-gray-500 font-serif leading-relaxed mt-4 block">
@@ -490,7 +538,8 @@
                     </div>
                     <!-- Filosofía 8 -->
                     <div class="swiper-slide">
-                        <p class="font-display italic text-lg text-gray-300 leading-relaxed max-w-xs block">
+                        <p data-i18n="quote_8"
+                            class="font-display italic text-lg text-gray-300 leading-relaxed max-w-xs block">
                             "Si puedes soñarlo, puedes hacerlo. Recuerda que todo esto comenzó con un ratón."
                         </p>
                         <p class="text-xs text-gray-500 font-serif leading-relaxed mt-4 block">
@@ -499,7 +548,8 @@
                     </div>
                     <!-- Filosofía 9 -->
                     <div class="swiper-slide">
-                        <p class="font-display italic text-lg text-accent-gold leading-relaxed max-w-xs block">
+                        <p data-i18n="quote_9"
+                            class="font-display italic text-lg text-accent-gold leading-relaxed max-w-xs block">
                             "La vida es 10% lo que te sucede y 90% cómo reaccionas a ello."
                         </p>
                         <p class="text-xs text-gray-500 font-serif leading-relaxed mt-4 block">
@@ -508,7 +558,8 @@
                     </div>
                     <!-- Filosofía 10 -->
                     <div class="swiper-slide">
-                        <p class="font-display italic text-lg text-gray-300 leading-relaxed max-w-xs block">
+                        <p data-i18n="quote_10"
+                            class="font-display italic text-lg text-gray-300 leading-relaxed max-w-xs block">
                             "Haz lo que puedas, con lo que tengas, donde estés."
                         </p>
                         <p class="text-xs text-gray-500 font-serif leading-relaxed mt-4 block">
@@ -517,7 +568,8 @@
                     </div>
                     <!-- Filosofía 11 -->
                     <div class="swiper-slide">
-                        <p class="font-display italic text-lg text-primary leading-relaxed max-w-xs block">
+                        <p data-i18n="quote_11"
+                            class="font-display italic text-lg text-primary leading-relaxed max-w-xs block">
                             "Rodéate de personas que iluminen tu camino y te ayuden a volar más alto."
                         </p>
                         <p class="text-xs text-gray-500 font-serif leading-relaxed mt-4 block">
@@ -549,7 +601,7 @@
                 stretch: 0,
                 depth: 250, // Profundidad para el efecto 3D
                 modifier: 1,
-                slideShadows: true,
+                slideShadows: false, // <-- Deshabilitado para que no cause conflicto visual con la animación flotante ni oscurezca los bordes dorados
             }
         });
 
@@ -574,7 +626,7 @@
             },
             autoplay: {
                 delay: 4500,
-                disableOnInteraction: false,
+                disableOnInteraction: true,
             }
         });
         // Generación de partículas de polvo dorado
@@ -603,8 +655,216 @@
             }
         }
 
-        // Ejecutar al cargar
-        document.addEventListener('DOMContentLoaded', createParticles);
+        /* -----------------------------------------------------
+           LOCALIZATION (i18n) LOGIC
+        ------------------------------------------------------*/
+        const translations = {
+            'es': {
+                subtitle: 'Coleccionables Digitales',
+                title_access: 'Acceso en',
+                title_month: 'Marzo',
+                rarity_exclusive: 'Exclusivo',
+                card_1_title: 'Cubo Génesis',
+                rarity_rare: 'Raro',
+                card_2_title: 'Esfera del Vacío',
+                rarity_epic: 'Épico',
+                card_3_title: 'Prisma del Tiempo',
+                rarity_mythic: 'Mítico',
+                card_4_title: 'Aura Esmeralda',
+                rarity_legendary: 'Legendario',
+                card_5_title: 'Nova Púrpura',
+                fomo_highlight: 'Cupo limitado.',
+                fomo_text: 'Solo los primeros tendrán acceso a la colección fundacional.',
+                email_placeholder: 'tu@correo.com',
+                notify_btn: 'Notificarme',
+                quote_1: '"Coleccionar es rescatar la belleza del tiempo."',
+                quote_1_author_prefix: 'Como decía',
+                quote_1_sub: '"En todo objeto coleccionado, el pasado encuentra su refugio más íntimo."',
+                quote_2: '"El único límite para nuestros logros de mañana serán nuestras dudas de hoy."',
+                quote_3: '"No esperes a que las condiciones sean perfectas para empezar. El comienzo hace que las condiciones sean perfectas."',
+                quote_4: '"Cree que puedes y estarás a mitad de camino."',
+                quote_5: '"Tu tiempo es limitado, así que no lo desperdicies viviendo la vida de alguien más."',
+                quote_6: '"El éxito no es final, el fracaso no es fatal: lo que cuenta es el valor para continuar."',
+                quote_7: '"Amarte a ti mismo ahora mismo, tal como eres, es darte el cielo a ti mismo."',
+                quote_8: '"Si puedes soñarlo, puedes hacerlo. Recuerda que todo esto comenzó con un ratón."',
+                quote_9: '"La vida es 10% lo que te sucede y 90% cómo reaccionas a ello."',
+                quote_10: '"Haz lo que puedas, con lo que tengas, donde estés."',
+                quote_11: '"Rodéate de personas que iluminen tu camino y te ayuden a volar más alto."'
+            },
+            'en': {
+                subtitle: 'Digital Collectibles',
+                title_access: 'Access in',
+                title_month: 'March',
+                rarity_exclusive: 'Exclusive',
+                card_1_title: 'Genesis Cube',
+                rarity_rare: 'Rare',
+                card_2_title: 'Void Sphere',
+                rarity_epic: 'Epic',
+                card_3_title: 'Time Prism',
+                rarity_mythic: 'Mythic',
+                card_4_title: 'Emerald Aura',
+                rarity_legendary: 'Legendary',
+                card_5_title: 'Purple Nova',
+                fomo_highlight: 'Limited spots.',
+                fomo_text: 'Only the first will have access to the foundational collection.',
+                email_placeholder: 'you@email.com',
+                notify_btn: 'Notify Me',
+                quote_1: '"Collecting is rescuing the beauty of time."',
+                quote_1_author_prefix: 'As said by',
+                quote_1_sub: '"In every collected object, the past finds its most intimate shelter."',
+                quote_2: '"The only limit to our realization of tomorrow will be our doubts of today."',
+                quote_3: '"Do not wait until the conditions are perfect to begin. Beginning makes the conditions perfect."',
+                quote_4: '"Believe you can and you\'re halfway there."',
+                quote_5: '"Your time is limited, don\'t waste it living someone else\'s life."',
+                quote_6: '"Success is not final, failure is not fatal: it is the courage to continue that counts."',
+                quote_7: '"To love yourself right now, just as you are, is to give yourself heaven."',
+                quote_8: '"If you can dream it, you can do it. Always remember that this whole thing was started with a dream and a mouse."',
+                quote_9: '"Life is 10% what happens to you and 90% how you react to it."',
+                quote_10: '"Do what you can, with what you have, where you are."',
+                quote_11: '"Surround yourself with only people who are going to lift you higher."'
+            },
+            'fr': {
+                subtitle: 'Objets de Collection Numériques',
+                title_access: 'Accès en',
+                title_month: 'Mars',
+                rarity_exclusive: 'Exclusif',
+                card_1_title: 'Cube Genèse',
+                rarity_rare: 'Rare',
+                card_2_title: 'Sphère du Vide',
+                rarity_epic: 'Épique',
+                card_3_title: 'Prisme Temporel',
+                rarity_mythic: 'Mythique',
+                card_4_title: 'Aura Émeraude',
+                rarity_legendary: 'Légendaire',
+                card_5_title: 'Nova Pourpre',
+                fomo_highlight: 'Places limitées.',
+                fomo_text: 'Seuls les premiers auront accès à la collection fondatrice.',
+                email_placeholder: 'vous@email.fr',
+                notify_btn: 'M\'avertir',
+                quote_1: '"Collectionner, c\'est sauver la beauté du temps."',
+                quote_1_author_prefix: 'Comme disait',
+                quote_1_sub: '"Dans chaque objet collectionné, le passé trouve son abri le plus intime."',
+                quote_2: '"La seule limite à notre épanouissement de demain sera nos doutes d\'aujourd\'hui."',
+                quote_3: '"N\'attendez pas que les conditions soient parfaites pour commencer. Commencer rend les conditions parfaites."',
+                quote_4: '"Croyez que vous le pouvez et vous serez à mi-chemin."',
+                quote_5: '"Votre temps est limité, ne le gâchez pas en menant une existence qui n\'est pas la vôtre."',
+                quote_6: '"Le succès n\'est pas final, l\'échec n\'est pas fatal : c\'est le courage de continuer qui compte."',
+                quote_7: '"S\'aimer soi-même en ce moment, tel que l\'on est, c\'est s\'offrir le paradis."',
+                quote_8: '"Si vous pouvez le rêver, vous pouvez le faire. N\'oubliez jamais que tout cela a commencé par une souris."',
+                quote_9: '"La vie, c\'est 10% ce qui t\'arrive et 90% la façon dont tu y réagis."',
+                quote_10: '"Faites ce que vous pouvez, avec ce que vous avez, là où vous êtes."',
+                quote_11: '"Entourez-vous de personnes qui illuminent votre chemin et vous aident à voler plus haut."'
+            },
+            'de': {
+                subtitle: 'Digitale Sammlerstücke',
+                title_access: 'Zugang im',
+                title_month: 'März',
+                rarity_exclusive: 'Exklusiv',
+                card_1_title: 'Genesis Würfel',
+                rarity_rare: 'Selten',
+                card_2_title: 'Sphäre der Leere',
+                rarity_epic: 'Episch',
+                card_3_title: 'Zeitprisma',
+                rarity_mythic: 'Mythisch',
+                card_4_title: 'Smaragd Aura',
+                rarity_legendary: 'Legendär',
+                card_5_title: 'Lila Nova',
+                fomo_highlight: 'Begrenzte Plätze.',
+                fomo_text: 'Nur die Ersten erhalten Zugang zur Gründungskollektion.',
+                email_placeholder: 'deine@email.de',
+                notify_btn: 'Benachrichtigen',
+                quote_1: '"Sammeln bedeutet, die Schönheit der Zeit zu retten."',
+                quote_1_author_prefix: 'Wie',
+                quote_1_sub: '"In jedem gesammelten Objekt findet die Vergangenheit ihre intimste Zuflucht." sagte',
+                quote_2: '"Die einzige Grenze für unsere Verwirklichung morgen werden unsere Zweifel von heute sein."',
+                quote_3: '"Warten Sie nicht auf perfekte Bedingungen, um zu beginnen. Das Beginnen macht die Bedingungen perfekt."',
+                quote_4: '"Glaube, dass du es kannst, und du hast den halben Weg schon geschafft."',
+                quote_5: '"Deine Zeit ist begrenzt, vergeude sie nicht damit, das Leben eines anderen zu leben."',
+                quote_6: '"Erfolg ist nicht endgültig, Misserfolg ist nicht fatal: Was zählt, ist der Mut weiterzumachen."',
+                quote_7: '"Sich selbst genau jetzt so zu lieben, wie man ist, bedeutet, sich selbst den Himmel zu schenken."',
+                quote_8: '"Wenn du es träumen kannst, kannst du es tun. Vergiss niemals, dass all dies mit einer Maus begann."',
+                quote_9: '"Das Leben besteht zu 10 % aus dem, was einem passiert, und zu 90 % daraus, wie man darauf reagiert."',
+                quote_10: '"Tu, was du kannst, mit dem, was du hast, wo immer du bist."',
+                quote_11: '"Umgib dich mit Menschen, die deinen Weg erhellen und dir helfen, höher zu fliegen."'
+            },
+            'zh': {
+                subtitle: '数字收藏品',
+                title_access: '访问权限',
+                title_month: '三月开放',
+                rarity_exclusive: '独家',
+                card_1_title: '创世纪魔方',
+                rarity_rare: '稀有',
+                card_2_title: '虚空之球',
+                rarity_epic: '史诗',
+                card_3_title: '时间棱镜',
+                rarity_mythic: '神话',
+                card_4_title: '翡翠光环',
+                rarity_legendary: '传说',
+                card_5_title: '紫色新星',
+                fomo_highlight: '名额有限。',
+                fomo_text: '只有最先加入的人才能获得基础系列。',
+                email_placeholder: '你的@email.com',
+                notify_btn: '通知我',
+                quote_1: '"收藏就是拯救时间之美。"',
+                quote_1_author_prefix: '正如',
+                quote_1_sub: '"在每一件收藏品中，过去找到了它最私密的庇护所。"',
+                quote_2: '"限制我们明天成就的，只有我们今天的疑虑。"',
+                quote_3: '"不要等到条件完美才开始。开始会让条件变得完美。"',
+                quote_4: '"相信你能做到，你就成功了一半。"',
+                quote_5: '"你的时间有限，不要浪费在过别人的生活上。"',
+                quote_6: '"成功不是终点，失败也非末日：最重要的是继续前进的勇气。"',
+                quote_7: '"就现在，按照你本来的样子爱自己，就是给自己天堂。"',
+                quote_8: '"如果你能梦想，你就能做到。永远记住，这一切都是从一只老鼠开始的。"',
+                quote_9: '"生活中有10%是你遭遇的事情，90%是你对这些事情的反应。"',
+                quote_10: '"用你有的东西，在你所在的地方，尽你所能。"',
+                quote_11: '"与那些能照亮你前进道路并帮助你飞得更高的人为伍。"'
+            }
+        };
+
+        const supportedLangs = ['es', 'en', 'fr', 'de', 'zh'];
+        let currentLang = 'es';
+
+        function initLanguage() {
+            // Get browser language (e.g., 'es-MX' -> 'es')
+            const browserLang = (navigator.language || navigator.userLanguage).split('-')[0].toLowerCase();
+
+            // Check if standard browser language is supported, otherwise default to 'es'
+            currentLang = supportedLangs.includes(browserLang) ? browserLang : 'es';
+
+            applyTranslations(currentLang);
+        }
+
+        function changeLanguage(langCode) {
+            if (supportedLangs.includes(langCode)) {
+                currentLang = langCode;
+                applyTranslations(currentLang);
+            }
+        }
+
+        function applyTranslations(lang) {
+            // Update UI selector
+            document.getElementById('current-lang-text').innerText = lang;
+
+            // Apply text translations using data-i18n attributes
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+
+            // Handle special cases (placeholder)
+            const emailInput = document.getElementById('email-input');
+            if (emailInput && translations[lang]['email_placeholder']) {
+                emailInput.placeholder = translations[lang]['email_placeholder'];
+            }
+        }
+
+        // Run on load
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            initLanguage(); // Initialise language detection
+        });
     </script>
 </body>
 
