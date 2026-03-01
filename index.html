@@ -107,10 +107,10 @@
         .quotes-swiper {
             width: 100%;
             height: auto;
-            min-height: 160px;
             max-width: 380px;
             margin: 0 auto;
-            padding-bottom: 30px;
+            padding-bottom: 25px;
+            /* Reducido para acercar los puntos al borde inferior */
         }
 
         .swiper-pagination-bullet {
@@ -167,6 +167,8 @@
     <style>
         body {
             min-height: 100dvh;
+            overscroll-behavior-y: none;
+            /* Previene el bounce o sobre-scroll en móviles */
         }
 
         .aspect-container {
@@ -177,6 +179,8 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            padding-bottom: env(safe-area-inset-bottom);
+            /* Fix for iOS home bar */
         }
 
         /* Particles */
@@ -300,12 +304,12 @@
                     <span data-i18n="title_month" class="gold-gradient-text font-bold text-2xl sm:text-3xl">Marzo</span>
                 </h2>
             </div>
-            <div class="swiper cards-swiper mb-8">
+            <div class="swiper cards-swiper mb-2 sm:mb-4">
                 <div class="swiper-wrapper">
                     <!-- Carta 1 -->
                     <div class="swiper-slide group">
                         <div
-                            class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-primary/50 card-glow-enhanced overflow-hidden relative animate-float">
+                            class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-primary/50 card-glow-enhanced overflow-hidden relative">
                             <img alt="Arte Digital Dorado"
                                 class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4pgq1rahE39kVBIwaOgKhdk0hMJD4B_haZVs2d5xRme9axWyJqPATNiN2-TY2TtlssSlllOCguuS2mFtFysfe1LwVZfuzAwNWU7UFUfhHwUO0t4FPNoeprsFxcxRWv6liiVaBKRCq4efihY-w_RacRmjN-N5ZauYK84CW6aPHWEAV3NVQEh-TtCfAe7YGX3XSYtmtcUQiQR2DPfQTKuD22mOZ0-D6ypjldLMQiGpIQKGUzgWRgrRsVHU0nmlzuvIkO6Mkx6PeQACn" />
@@ -329,7 +333,7 @@
                         </div>
                     </div>
                     <!-- Carta 2 -->
-                    <div class="swiper-slide group animate-float-delayed">
+                    <div class="swiper-slide group">
                         <div
                             class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-gray-400/50 card-glow-enhanced overflow-hidden relative">
                             <img alt="Fondo Abstracto 1"
@@ -356,7 +360,7 @@
                     <!-- Carta 3 -->
                     <div class="swiper-slide group">
                         <div
-                            class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-blue-400/50 card-glow-enhanced overflow-hidden relative animate-float">
+                            class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-blue-400/50 card-glow-enhanced overflow-hidden relative">
                             <img alt="Fondo Abstracto 2"
                                 class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDwwyHeoo0y7J4d_0nhNi0t4zQGidpdo3L3EopsRR5ZlbFBga4RGOgQ6VUSG7lg0MUC0O8MDODviykFAGkdp50H7FVyulhDqpkGqsDabjsw_xy7deLfvtpbWMmMSoUcYbRkotgqWn9z0mW4x5zzz3jBKUEZay0na66HoDptzakPqyZl4vGFiNXNJuFnSYOpVbYKom0zfYAjtn0P7jnDzh0MnJsPyq_hUayi7TTCEkRU58_3nt2abnhURARawUKMvO7TF6vQPvG47XW" />
@@ -381,7 +385,7 @@
                     <!-- Carta 4 -->
                     <div class="swiper-slide group">
                         <div
-                            class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-green-400/50 card-glow-enhanced overflow-hidden relative animate-float-delayed">
+                            class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-green-400/50 card-glow-enhanced overflow-hidden relative">
                             <img alt="Abstracto 3"
                                 class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 saturate-150 hue-rotate-90 filter"
                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4pgq1rahE39kVBIwaOgKhdk0hMJD4B_haZVs2d5xRme9axWyJqPATNiN2-TY2TtlssSlllOCguuS2mFtFysfe1LwVZfuzAwNWU7UFUfhHwUO0t4FPNoeprsFxcxRWv6liiVaBKRCq4efihY-w_RacRmjN-N5ZauYK84CW6aPHWEAV3NVQEh-TtCfAe7YGX3XSYtmtcUQiQR2DPfQTKuD22mOZ0-D6ypjldLMQiGpIQKGUzgWRgrRsVHU0nmlzuvIkO6Mkx6PeQACn" />
@@ -406,7 +410,7 @@
                     <!-- Carta 5 -->
                     <div class="swiper-slide group">
                         <div
-                            class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-purple-400/50 card-glow-enhanced overflow-hidden relative animate-float">
+                            class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-purple-400/50 card-glow-enhanced overflow-hidden relative">
                             <img alt="Abstracto 4"
                                 class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 saturate-200 hue-rotate-180 filter"
                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDwwyHeoo0y7J4d_0nhNi0t4zQGidpdo3L3EopsRR5ZlbFBga4RGOgQ6VUSG7lg0MUC0O8MDODviykFAGkdp50H7FVyulhDqpkGqsDabjsw_xy7deLfvtpbWMmMSoUcYbRkotgqWn9z0mW4x5zzz3jBKUEZay0na66HoDptzakPqyZl4vGFiNXNJuFnSYOpVbYKom0zfYAjtn0P7jnDzh0MnJsPyq_hUayi7TTCEkRU58_3nt2abnhURARawUKMvO7TF6vQPvG47XW" />
@@ -430,8 +434,8 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full max-w-sm shrink-0 mt-4 mb-4">
-                <div class="text-center mb-4">
+            <div class="w-full max-w-sm shrink-0 mt-2 mb-2">
+                <div class="text-center mb-2 sm:mb-4">
                     <p class="text-sm font-medium tracking-wide">
                         <span data-i18n="fomo_highlight" class="text-primary font-bold animate-pulse">Cupo
                             limitado.</span> <span data-i18n="fomo_text" class="text-gray-300">Solo los primeros tendrán
@@ -458,8 +462,8 @@
                 </div>
             </div>
         </main>
-        <footer class="w-full text-center px-4 relative z-20 shrink-0 pb-4">
-            <div class="border-t border-white/10 w-24 mx-auto mb-6"></div>
+        <footer class="w-full text-center px-4 relative z-20 shrink-0 pb-0">
+            <div class="border-t border-white/10 w-24 mx-auto mb-4"></div>
 
             <div class="swiper quotes-swiper">
                 <div class="swiper-wrapper">
@@ -596,8 +600,9 @@
             centeredSlides: true,
             slidesPerView: 'auto',
             loop: true,
+            speed: 600, // Hace que la transición sea más natural
             coverflowEffect: {
-                rotate: 20, // Grados de rotación para que se vean de lado
+                rotate: 15, // Un poco menos de rotación para evitar brincos bruscos en móviles pequeños
                 stretch: 0,
                 depth: 250, // Profundidad para el efecto 3D
                 modifier: 1,
