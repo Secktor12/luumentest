@@ -92,15 +92,22 @@
 
         .cards-swiper {
             width: 100%;
-            padding-top: 30px;
-            padding-bottom: 30px;
+            padding-top: 15px;
+            padding-bottom: 15px;
             overflow: visible !important;
             /* Permite que la sombra gigante sobresalga sin cortarse */
         }
 
+        @media (min-width: 640px) {
+            .cards-swiper {
+                padding-top: 30px;
+                padding-bottom: 30px;
+            }
+        }
+
         .cards-swiper .swiper-slide {
             width: auto;
-            height: clamp(260px, 45vh, 350px);
+            height: clamp(230px, 42vh, 350px);
             aspect-ratio: 2.2 / 3.3;
         }
 
@@ -166,21 +173,39 @@
     </style>
     <style>
         body {
+            height: 100dvh;
             min-height: 100dvh;
+            overflow: hidden;
+            /* Bloquea el scroll vertical fijo a la pantalla */
             overscroll-behavior-y: none;
             /* Previene el bounce o sobre-scroll en móviles */
+        }
+
+        @media (min-width: 640px) {
+            body {
+                height: auto;
+                overflow: auto;
+                /* Permite escrolear libremente en escritorio */
+            }
         }
 
         .aspect-container {
             width: 100%;
             max-width: 480px;
             margin: 0 auto;
-            min-height: 100dvh;
+            height: 100dvh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             padding-bottom: env(safe-area-inset-bottom);
             /* Fix for iOS home bar */
+        }
+
+        @media (min-width: 640px) {
+            .aspect-container {
+                height: auto;
+                min-height: 100dvh;
+            }
         }
 
         /* Particles */
@@ -251,7 +276,7 @@
     <div class="particles-container" id="particles-js"></div>
 
     <div class="relative z-10 aspect-container px-4 py-4 sm:px-6">
-        <header class="flex flex-col items-center justify-center pt-2 pb-4 shrink-0 relative">
+        <header class="flex flex-col items-center justify-center pt-2 pb-1 sm:pb-4 shrink-0 relative">
 
             <!-- Language Switcher (Marketing optimized) -->
             <div class="absolute right-0 top-2 sm:right-4 z-50">
@@ -293,18 +318,19 @@
             </div>
 
             <img src="logo.png" alt="Luumen Logo"
-                class="h-16 w-auto logo-glow object-contain transition-all duration-500 hover:scale-105" />
+                class="h-10 sm:h-16 w-auto logo-glow object-contain transition-all duration-500 hover:scale-105" />
         </header>
         <main class="flex-grow flex flex-col items-center justify-center min-h-0">
-            <div class="text-center mb-4 w-full relative z-20 shrink-0">
-                <p data-i18n="subtitle" class="text-primary/90 text-[9px] font-bold tracking-[0.4em] uppercase mb-1">
+            <div class="text-center mb-1 sm:mb-4 w-full relative z-20 shrink-0">
+                <p data-i18n="subtitle"
+                    class="text-primary/90 text-[8px] sm:text-[9px] font-bold tracking-[0.4em] uppercase mb-1">
                     Coleccionables Digitales</p>
-                <h2 class="text-xl sm:text-2xl font-display font-medium leading-tight text-gray-200">
+                <h2 class="text-lg sm:text-2xl font-display font-medium leading-tight text-gray-200">
                     <span data-i18n="title_access">Acceso en</span> <br />
-                    <span data-i18n="title_month" class="gold-gradient-text font-bold text-2xl sm:text-3xl">Marzo</span>
+                    <span data-i18n="title_month" class="gold-gradient-text font-bold text-xl sm:text-3xl">Marzo</span>
                 </h2>
             </div>
-            <div class="swiper cards-swiper mb-2 sm:mb-4">
+            <div class="swiper cards-swiper mb-1 sm:mb-4">
                 <div class="swiper-wrapper">
                     <!-- Carta 1 -->
                     <div class="swiper-slide group">
@@ -434,9 +460,9 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full max-w-sm shrink-0 mt-2 mb-2">
-                <div class="text-center mb-2 sm:mb-4">
-                    <p class="text-sm font-medium tracking-wide">
+            <div class="w-full max-w-sm shrink-0 mt-1 mb-1 sm:mt-2 sm:mb-4">
+                <div class="text-center mb-1 sm:mb-4">
+                    <p class="text-[11px] sm:text-sm font-medium tracking-wide">
                         <span data-i18n="fomo_highlight" class="text-primary font-bold animate-pulse">Cupo
                             limitado.</span> <span data-i18n="fomo_text" class="text-gray-300">Solo los primeros tendrán
                             acceso a la colección fundacional.</span>
@@ -447,15 +473,15 @@
                         class="absolute -inset-0.5 bg-gradient-to-r from-primary/50 to-accent-gold/50 rounded-xl opacity-40 blur transition duration-300 group-hover:opacity-80">
                     </div>
                     <div
-                        class="relative flex items-center bg-surface-dark rounded-xl p-1.5 shadow-2xl border border-white/10">
-                        <div class="pl-4 pr-2">
-                            <span class="material-symbols-outlined text-gray-500 text-[20px]">mail</span>
+                        class="relative flex items-center bg-surface-dark rounded-xl p-1 sm:p-1.5 shadow-2xl border border-white/10">
+                        <div class="pl-3 sm:pl-4 pr-1 sm:pr-2">
+                            <span class="material-symbols-outlined text-gray-500 text-[18px] sm:text-[20px]">mail</span>
                         </div>
                         <input id="email-input"
-                            class="w-full bg-transparent border-none text-white placeholder-gray-500 focus:ring-0 text-sm py-3 px-1 transition-colors"
+                            class="w-full bg-transparent border-none text-white placeholder-gray-500 focus:ring-0 text-xs sm:text-sm py-2 sm:py-3 px-1 transition-colors"
                             placeholder="tu@correo.com" type="email" />
                         <button id="notify-button" data-i18n="notify_btn"
-                            class="bg-primary text-black font-bold text-[11px] sm:text-xs uppercase tracking-wide py-3 px-4 sm:px-5 rounded-lg hover:bg-accent-gold transition-all shadow-[0_0_15px_rgba(212,175,55,0.4)] transform active:scale-95 duration-150 whitespace-nowrap">
+                            class="bg-primary text-black font-bold text-[10px] sm:text-xs uppercase tracking-wide py-2 sm:py-3 px-3 sm:px-5 rounded-lg hover:bg-accent-gold transition-all shadow-[0_0_15px_rgba(212,175,55,0.4)] transform active:scale-95 duration-150 whitespace-nowrap">
                             Notificarme
                         </button>
                     </div>
