@@ -104,26 +104,17 @@
 
         .cards-swiper .swiper-slide {
             width: auto;
-            height: clamp(350px, 100%, 80vh);
-            max-width: none;
-            /* Removing previous 92vw limit so height drives scale infinitely */
-            aspect-ratio: 2 / 3.4;
-            /* Slightly taller proportion for narrow displays */
+            height: clamp(260px, 48vh, 55vh);
+            max-width: auto;
+            aspect-ratio: 2.1 / 3.4;
         }
 
         @media (min-width: 640px) {
             .cards-swiper .swiper-slide {
-                max-width: 90vw;
+                max-width: 400px;
                 height: 100%;
-                max-height: 75vh;
+                max-height: 60vh;
                 aspect-ratio: 2.2 / 3.3;
-            }
-        }
-
-        @media (min-width: 640px) {
-            .cards-swiper .swiper-slide {
-                height: 100%;
-                max-height: 75vh;
             }
         }
 
@@ -188,7 +179,7 @@
         }
 
         .quotes-swiper .swiper-slide p.font-display {
-            font-size: clamp(14px, 2.5vh, 18px);
+            font-size: clamp(11px, 2vh, 14px);
             /* Hace que la frase quepa mejor en teléfonos cortos */
             line-height: 1.3;
         }
@@ -265,12 +256,13 @@
 
         /* Card Glow Enhancements */
         .card-glow-enhanced {
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.25), inset 0 0 20px rgba(212, 175, 55, 0.1);
-            transition: box-shadow 0.5s ease;
+            box-shadow: 0 0 60px rgba(212, 175, 55, 0.45), inset 0 0 30px rgba(212, 175, 55, 0.2) !important;
+            transition: box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s ease;
         }
 
-        .swiper-slide.group:hover .card-glow-enhanced {
-            box-shadow: 0 0 80px rgba(212, 175, 55, 0.6), inset 0 0 30px rgba(212, 175, 55, 0.3);
+        .swiper-slide.group:hover .card-glow-enhanced,
+        .swiper-slide-active .card-glow-enhanced {
+            box-shadow: 0 0 120px rgba(212, 175, 55, 0.85), 0 0 40px rgba(212, 175, 55, 0.6), inset 0 0 50px rgba(212, 175, 55, 0.5) !important;
         }
 
         /* Enhanced Shimmer Layer */
@@ -287,6 +279,38 @@
         /* Logo Glow */
         .logo-glow {
             filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.8)) drop-shadow(0 0 30px rgba(212, 175, 55, 0.4));
+        }
+
+        /* Mute Button Styles */
+        .mute-btn-container {
+            position: absolute;
+            bottom: 25px;
+            /* Adjust according to layout, floating above swiper pagination */
+            right: 20px;
+            z-index: 100;
+        }
+
+        .mute-btn {
+            background: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .mute-btn:hover {
+            border-color: rgba(212, 175, 55, 0.8);
+            color: #D4AF37;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -353,29 +377,31 @@
             </div>
 
             <img src="logo.png" alt="Luumen Logo"
-                class="h-9 sm:h-16 w-auto logo-glow object-contain transition-all duration-500 hover:scale-105" />
+                class="h-12 sm:h-20 w-auto logo-glow object-contain transition-all duration-500 hover:scale-105" />
 
         </header>
         <main class="flex-1 flex flex-col items-center justify-between w-full my-0 sm:my-2 min-h-0 relative px-0">
             <div class="text-center mt-1 w-full relative z-20 shrink-0">
                 <p data-i18n="subtitle"
-                    class="text-primary/90 text-[8px] sm:text-[9px] font-bold tracking-[0.4em] uppercase mb-0">
-                    Coleccionables Digitales</p>
+                    class="text-primary/90 text-[10px] sm:text-[11px] font-bold tracking-[0.4em] uppercase mb-0">
+                    Coleccionables</p>
                 <h2 class="text-lg sm:text-2xl font-display font-medium leading-tight text-gray-200 mt-0">
                     <span data-i18n="title_access">Acceso en</span> <br />
                     <span data-i18n="title_month" class="gold-gradient-text font-bold text-xl sm:text-3xl">Marzo</span>
                 </h2>
             </div>
             <div
-                class="swiper cards-swiper flex-1 h-full w-full relative sm:min-h-0 sm:flex sm:flex-col sm:justify-center sm:items-center">
+                class="swiper cards-swiper flex-1 h-full w-full relative -mt-12 sm:mt-0 sm:min-h-0 sm:flex sm:flex-col sm:justify-center sm:items-center">
                 <div class="swiper-wrapper">
                     <!-- Carta 1 -->
                     <div class="swiper-slide group">
                         <div
                             class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-primary/50 card-glow-enhanced overflow-hidden relative">
-                            <img alt="Arte Digital Dorado"
+                            <video
                                 class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4pgq1rahE39kVBIwaOgKhdk0hMJD4B_haZVs2d5xRme9axWyJqPATNiN2-TY2TtlssSlllOCguuS2mFtFysfe1LwVZfuzAwNWU7UFUfhHwUO0t4FPNoeprsFxcxRWv6liiVaBKRCq4efihY-w_RacRmjN-N5ZauYK84CW6aPHWEAV3NVQEh-TtCfAe7YGX3XSYtmtcUQiQR2DPfQTKuD22mOZ0-D6ypjldLMQiGpIQKGUzgWRgrRsVHU0nmlzuvIkO6Mkx6PeQACn" />
+                                autoplay loop muted playsinline>
+                                <source src="videos/genesis.mp4" type="video/mp4">
+                            </video>
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80">
                             </div>
@@ -399,9 +425,11 @@
                     <div class="swiper-slide group">
                         <div
                             class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-gray-400/50 card-glow-enhanced overflow-hidden relative">
-                            <img alt="Fondo Abstracto 1"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 grayscale opacity-80"
-                                src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" />
+                            <video
+                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 opacity-100"
+                                autoplay loop muted playsinline>
+                                <source src="videos/esfera.mp4" type="video/mp4">
+                            </video>
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80">
                             </div>
@@ -424,9 +452,11 @@
                     <div class="swiper-slide group">
                         <div
                             class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-blue-400/50 card-glow-enhanced overflow-hidden relative">
-                            <img alt="Fondo Abstracto 2"
+                            <video
                                 class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDwwyHeoo0y7J4d_0nhNi0t4zQGidpdo3L3EopsRR5ZlbFBga4RGOgQ6VUSG7lg0MUC0O8MDODviykFAGkdp50H7FVyulhDqpkGqsDabjsw_xy7deLfvtpbWMmMSoUcYbRkotgqWn9z0mW4x5zzz3jBKUEZay0na66HoDptzakPqyZl4vGFiNXNJuFnSYOpVbYKom0zfYAjtn0P7jnDzh0MnJsPyq_hUayi7TTCEkRU58_3nt2abnhURARawUKMvO7TF6vQPvG47XW" />
+                                autoplay loop muted playsinline>
+                                <source src="videos/prisma.mp4" type="video/mp4">
+                            </video>
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80">
                             </div>
@@ -449,9 +479,11 @@
                     <div class="swiper-slide group">
                         <div
                             class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-green-400/50 card-glow-enhanced overflow-hidden relative">
-                            <img alt="Abstracto 3"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 saturate-150 hue-rotate-90 filter"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4pgq1rahE39kVBIwaOgKhdk0hMJD4B_haZVs2d5xRme9axWyJqPATNiN2-TY2TtlssSlllOCguuS2mFtFysfe1LwVZfuzAwNWU7UFUfhHwUO0t4FPNoeprsFxcxRWv6liiVaBKRCq4efihY-w_RacRmjN-N5ZauYK84CW6aPHWEAV3NVQEh-TtCfAe7YGX3XSYtmtcUQiQR2DPfQTKuD22mOZ0-D6ypjldLMQiGpIQKGUzgWRgrRsVHU0nmlzuvIkO6Mkx6PeQACn" />
+                            <video
+                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
+                                autoplay loop muted playsinline>
+                                <source src="videos/aura.mp4" type="video/mp4">
+                            </video>
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80">
                             </div>
@@ -474,9 +506,11 @@
                     <div class="swiper-slide group">
                         <div
                             class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-purple-400/50 card-glow-enhanced overflow-hidden relative">
-                            <img alt="Abstracto 4"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 saturate-200 hue-rotate-180 filter"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDwwyHeoo0y7J4d_0nhNi0t4zQGidpdo3L3EopsRR5ZlbFBga4RGOgQ6VUSG7lg0MUC0O8MDODviykFAGkdp50H7FVyulhDqpkGqsDabjsw_xy7deLfvtpbWMmMSoUcYbRkotgqWn9z0mW4x5zzz3jBKUEZay0na66HoDptzakPqyZl4vGFiNXNJuFnSYOpVbYKom0zfYAjtn0P7jnDzh0MnJsPyq_hUayi7TTCEkRU58_3nt2abnhURARawUKMvO7TF6vQPvG47XW" />
+                            <video
+                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
+                                autoplay loop muted playsinline>
+                                <source src="videos/nova.mp4" type="video/mp4">
+                            </video>
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80">
                             </div>
@@ -496,13 +530,21 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Floating Audio Mute Toggle Button -->
+                <div class="mute-btn-container">
+                    <button id="global-mute-btn" class="mute-btn" title="Activar/Desactivar Sonido" type="button">
+                        <span class="material-symbols-outlined text-[20px]" id="mute-icon">volume_off</span>
+                    </button>
+                </div>
+
             </div>
-            <div class="w-full max-w-sm shrink-0 mb-1 mt-0 sm:mt-3 sm:mb-2 mx-auto relative z-20 px-2 sm:px-0">
+            <div class="w-full max-w-sm shrink-0 mb-1 -mt-16 sm:mt-3 sm:mb-2 mx-auto relative z-20 px-2 sm:px-0">
                 <div class="text-center mb-1 sm:mb-4">
                     <p class="text-[11px] sm:text-sm font-medium tracking-wide">
                         <span data-i18n="fomo_highlight" class="text-primary font-bold animate-pulse">Cupo
                             limitado.</span> <span data-i18n="fomo_text" class="text-gray-300">Solo los primeros tendrán
-                            acceso a la colección fundacional.</span>
+                            acceso a la colección fundadora.</span>
                     </p>
                 </div>
                 <div class="w-full relative group">
@@ -656,6 +698,35 @@
     <script>
         document.documentElement.classList.add('dark');
 
+        // Audio/Mute Implementation
+        const muteBtn = document.getElementById('global-mute-btn');
+        const muteIcon = document.getElementById('mute-icon');
+        let isMuted = true; // All videos start muted due to browser autoplay policies
+
+        function updateVideoAudioState() {
+            const allSlides = document.querySelectorAll('.cards-swiper .swiper-slide');
+
+            allSlides.forEach(slide => {
+                const video = slide.querySelector('video');
+                if (!video) return;
+
+                // Si está silenciado globalmente OR no es el slide central activo: se calla.
+                if (isMuted || !slide.classList.contains('swiper-slide-active')) {
+                    video.muted = true;
+                } else {
+                    // Si el sonido está activado Y es la tarjeta principal: suena.
+                    video.muted = false;
+                    video.play().catch(e => console.warn("Video playback prevented:", e));
+                }
+            });
+        }
+
+        muteBtn.addEventListener('click', () => {
+            isMuted = !isMuted;
+            muteIcon.textContent = isMuted ? 'volume_off' : 'volume_up';
+            updateVideoAudioState();
+        });
+
         // Swiper para las cartas principales (Efecto Coverflow)
         const cardsSwiper = new Swiper('.cards-swiper', {
             effect: 'coverflow',
@@ -664,6 +735,14 @@
             slidesPerView: 'auto',
             loop: true,
             speed: 600, // Hace que la transición sea más natural
+            on: {
+                // Se dispara en el momento exacto en que Swiper decide que hay una nueva tarjeta protagonista
+                slideChange: function () {
+                    // Update the audio state regardless to ensure old cards are muted, 
+                    // and if unmuted, the new card plays sound.
+                    updateVideoAudioState();
+                }
+            },
             coverflowEffect: {
                 rotate: 15, // Un poco menos de rotación para evitar brincos bruscos en móviles pequeños
                 stretch: 0,
@@ -728,21 +807,21 @@
         ------------------------------------------------------*/
         const translations = {
             'es': {
-                subtitle: 'Coleccionables Digitales',
+                subtitle: 'Coleccionables',
                 title_access: 'Acceso en',
                 title_month: 'Marzo',
-                rarity_exclusive: 'Exclusivo',
-                card_1_title: 'Cubo Génesis',
-                rarity_rare: 'Raro',
-                card_2_title: 'Esfera del Vacío',
-                rarity_epic: 'Épico',
-                card_3_title: 'Prisma del Tiempo',
-                rarity_mythic: 'Mítico',
-                card_4_title: 'Aura Esmeralda',
-                rarity_legendary: 'Legendario',
-                card_5_title: 'Nova Púrpura',
+                rarity_exclusive: 'Fundadora Prime',
+                card_1_title: 'Trish',
+                rarity_rare: 'Élite Original',
+                card_2_title: 'Natasha',
+                rarity_epic: 'Emblema Dorado',
+                card_3_title: 'Vanessa',
+                rarity_mythic: 'Leyenda Viva',
+                card_4_title: 'Scarlett',
+                rarity_legendary: 'Corona Suprema',
+                card_5_title: 'Mia',
                 fomo_highlight: 'Cupo limitado.',
-                fomo_text: 'Solo los primeros tendrán acceso a la colección fundacional.',
+                fomo_text: 'Solo los primeros tendrán acceso a la colección fundadora.',
                 email_placeholder: 'tu@correo.com',
                 notify_btn: 'Notificarme',
                 quote_1: '"Coleccionar es rescatar la belleza del tiempo."',
