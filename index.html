@@ -4,7 +4,51 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Luumen Landing Page - Cultura y Coleccionismo</title>
+    <title>Luumen | Coleccionables Digitales Únicos y Exclusivos</title>
+
+    <!-- Meta Tags para SEO Orgánico -->
+    <meta name="description"
+        content="Luumen es la plataforma definitiva para coleccionistas. Acceso exclusivo a piezas digitales, arte y la colección fundadora Prime. Descubre el futuro del coleccionismo." />
+    <meta name="keywords"
+        content="Luumen, coleccionables digitales, arte exclusivo, colección fundadora, activos digitales, México, coleccionismo" />
+    <meta name="author" content="Luumen" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://luumen.mx/" />
+
+    <!-- Open Graph (Facebook/WhatsApp/Redes Sociales) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://luumen.mx/" />
+    <meta property="og:title" content="Luumen | Una Nueva Era de Coleccionismo" />
+    <meta property="og:description"
+        content="Únete a la colección fundadora y descubre piezas digitales únicas. Exclusividad en cada detalle." />
+    <meta property="og:image" content="https://luumen.mx/logo.png" />
+
+    <!-- Twitter Cards -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://luumen.mx/" />
+    <meta property="twitter:title" content="Luumen | Coleccionables Digitales" />
+    <meta property="twitter:description"
+        content="Acceso exclusivo a la colección fundadora de Luumen en Marzo. No te quedes fuera." />
+    <meta property="twitter:image" content="https://luumen.mx/logo.png" />
+
+    <!-- Configuración de Favicons (Todas las plataformas) -->
+    <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#050505">
+    <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#D4AF37">
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
     <script>
         tailwind.config = {
@@ -254,6 +298,18 @@
             opacity: 0;
         }
 
+        .cards-swiper {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+
+        .card-glow-enhanced video {
+            will-change: transform;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+
         /* Card Glow Enhancements */
         .card-glow-enhanced {
             box-shadow: 0 0 60px rgba(212, 175, 55, 0.45), inset 0 0 30px rgba(212, 175, 55, 0.2) !important;
@@ -312,6 +368,26 @@
             box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
             transform: scale(1.05);
         }
+
+        /* Scrollbar para el modal */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+            display: block;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(212, 175, 55, 0.3);
+            border-radius: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(212, 175, 55, 0.6);
+        }
     </style>
 </head>
 
@@ -335,7 +411,7 @@
     <div class="particles-container" id="particles-js"></div>
 
     <div class="relative z-10 aspect-container px-4 py-4 sm:px-6">
-        <header class="flex flex-col items-center justify-center pt-2 pb-1 sm:pb-4 shrink-0 relative">
+        <header class="flex flex-col items-center justify-center pt-0 pb-0 sm:pb-2 shrink-0 relative">
 
             <!-- Language Switcher (Marketing optimized) -->
             <div class="absolute right-0 top-2 sm:right-4 z-50">
@@ -377,7 +453,7 @@
             </div>
 
             <img src="logo.png" alt="Luumen Logo"
-                class="h-12 sm:h-20 w-auto logo-glow object-contain transition-all duration-500 hover:scale-105" />
+                class="h-10 sm:h-16 w-auto logo-glow object-contain transition-all duration-500 hover:scale-105" />
 
         </header>
         <main class="flex-1 flex flex-col items-center justify-between w-full my-0 sm:my-2 min-h-0 relative px-0">
@@ -391,16 +467,16 @@
                 </h2>
             </div>
             <div
-                class="swiper cards-swiper flex-1 h-full w-full relative -mt-12 sm:mt-0 sm:min-h-0 sm:flex sm:flex-col sm:justify-center sm:items-center">
+                class="swiper cards-swiper flex-1 h-full w-full relative -mt-4 sm:mt-6 sm:min-h-0 sm:flex sm:flex-col sm:justify-center sm:items-center">
                 <div class="swiper-wrapper">
                     <!-- Carta 1 -->
-                    <div class="swiper-slide group">
+                    <div class="swiper-slide group" data-audio="audios/genesis.mp3">
                         <div
                             class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-primary/50 card-glow-enhanced overflow-hidden relative">
                             <video
                                 class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
-                                autoplay loop muted playsinline>
-                                <source src="videos/genesis.mp4" type="video/mp4">
+                                loop muted playsinline preload="auto">
+                                <source src="https://www.luumen.mx/videos/genesis.mp4" type="video/mp4">
                             </video>
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80">
@@ -422,13 +498,13 @@
                         </div>
                     </div>
                     <!-- Carta 2 -->
-                    <div class="swiper-slide group">
+                    <div class="swiper-slide group" data-audio="audios/esfera.mp3">
                         <div
                             class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-gray-400/50 card-glow-enhanced overflow-hidden relative">
                             <video
                                 class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 opacity-100"
-                                autoplay loop muted playsinline>
-                                <source src="videos/esfera.mp4" type="video/mp4">
+                                loop muted playsinline preload="auto">
+                                <source src="https://www.luumen.mx/videos/esfera.mp4" type="video/mp4">
                             </video>
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80">
@@ -449,13 +525,13 @@
                         </div>
                     </div>
                     <!-- Carta 3 -->
-                    <div class="swiper-slide group">
+                    <div class="swiper-slide group" data-audio="audios/prisma.mp3">
                         <div
                             class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-blue-400/50 card-glow-enhanced overflow-hidden relative">
                             <video
                                 class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
-                                autoplay loop muted playsinline>
-                                <source src="videos/prisma.mp4" type="video/mp4">
+                                loop muted playsinline preload="auto">
+                                <source src="https://www.luumen.mx/videos/prisma.mp4" type="video/mp4">
                             </video>
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80">
@@ -476,13 +552,13 @@
                         </div>
                     </div>
                     <!-- Carta 4 -->
-                    <div class="swiper-slide group">
+                    <div class="swiper-slide group" data-audio="audios/aura.mp3">
                         <div
                             class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-green-400/50 card-glow-enhanced overflow-hidden relative">
                             <video
                                 class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
-                                autoplay loop muted playsinline>
-                                <source src="videos/aura.mp4" type="video/mp4">
+                                loop muted playsinline preload="auto">
+                                <source src="https://www.luumen.mx/videos/aura.mp4" type="video/mp4">
                             </video>
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80">
@@ -503,13 +579,13 @@
                         </div>
                     </div>
                     <!-- Carta 5 -->
-                    <div class="swiper-slide group">
+                    <div class="swiper-slide group" data-audio="audios/nova.mp3">
                         <div
                             class="w-full h-full rounded-2xl bg-[#1a1a1a] border border-purple-400/50 card-glow-enhanced overflow-hidden relative">
                             <video
                                 class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
-                                autoplay loop muted playsinline>
-                                <source src="videos/nova.mp4" type="video/mp4">
+                                loop muted playsinline preload="auto">
+                                <source src="https://www.luumen.mx/videos/nova.mp4" type="video/mp4">
                             </video>
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80">
@@ -539,7 +615,7 @@
                 </div>
 
             </div>
-            <div class="w-full max-w-sm shrink-0 mb-1 -mt-16 sm:mt-3 sm:mb-2 mx-auto relative z-20 px-2 sm:px-0">
+            <div class="w-full max-w-sm shrink-0 mb-4 mt-2 sm:mt-8 sm:mb-4 mx-auto relative z-20 px-2 sm:px-0">
                 <div class="text-center mb-1 sm:mb-4">
                     <p class="text-[11px] sm:text-sm font-medium tracking-wide">
                         <span data-i18n="fomo_highlight" class="text-primary font-bold animate-pulse">Cupo
@@ -547,24 +623,36 @@
                             acceso a la colección fundadora.</span>
                     </p>
                 </div>
-                <div class="w-full relative group">
-                    <div
-                        class="absolute -inset-0.5 bg-gradient-to-r from-primary/50 to-accent-gold/50 rounded-xl opacity-40 blur transition duration-300 group-hover:opacity-80">
+                <div
+                    class="flex items-center bg-[#1a1a1a] rounded-full p-1.5 border border-primary/30 max-w-sm mx-auto shadow-[0_0_15px_rgba(0,0,0,0.5)] focus-within:border-primary focus-within:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all duration-300">
+                    <span class="material-symbols-outlined text-gray-400 pl-3">mail</span>
+                    <input id="emailInput"
+                        class="w-full bg-transparent border-none text-white focus:ring-0 px-3 py-2 text-sm md:text-base outline-none placeholder-gray-500"
+                        data-i18n-prop="placeholder" data-i18n="email_placeholder" placeholder="tu@correo.com"
+                        type="email" required />
+                    <button id="submitEmailBtn"
+                        class="bg-primary text-black hover:bg-yellow-500 rounded-full py-2.5 px-6 font-bold uppercase tracking-wider text-xs md:text-sm whitespace-nowrap transition-colors shadow-[0_2px_10px_rgba(212,175,55,0.4)] disabled:opacity-50 disabled:cursor-not-allowed">
+                        <span data-i18n="btn_notify">NOTIFICARME</span>
+                    </button>
+                </div>
+
+                <!-- Checkbox Términos y Condiciones -->
+                <div class="mt-3.5 flex items-start text-left px-2 sm:px-1">
+                    <div class="flex items-center h-5 shrink-0 mt-0.5">
+                        <input id="termsCheckbox" type="checkbox"
+                            class="w-4 h-4 text-primary bg-[#1a1a1a] border border-primary/50 rounded focus:ring-primary focus:ring-1 focus:ring-offset-0 focus:ring-offset-transparent cursor-pointer transition-colors shadow-[0_0_10px_rgba(212,175,55,0.2)]" />
                     </div>
-                    <div
-                        class="relative flex items-center bg-surface-dark rounded-xl p-1 sm:p-1.5 shadow-2xl border border-white/10">
-                        <div class="pl-3 sm:pl-4 pr-1 sm:pr-2">
-                            <span class="material-symbols-outlined text-gray-500 text-[18px] sm:text-[20px]">mail</span>
-                        </div>
-                        <input id="email-input"
-                            class="w-full bg-transparent border-none text-white placeholder-gray-500 focus:ring-0 text-xs sm:text-sm py-2 sm:py-3 px-1 transition-colors"
-                            placeholder="tu@correo.com" type="email" />
-                        <button id="notify-button" data-i18n="notify_btn"
-                            class="bg-primary text-black font-bold text-[10px] sm:text-xs uppercase tracking-wide py-2 sm:py-3 px-3 sm:px-5 rounded-lg hover:bg-accent-gold transition-all shadow-[0_0_15px_rgba(212,175,55,0.4)] transform active:scale-95 duration-150 whitespace-nowrap">
-                            Notificarme
-                        </button>
+                    <div class="ml-2.5 text-[11px] sm:text-xs">
+                        <label for="termsCheckbox"
+                            class="text-gray-400 font-light leading-snug cursor-pointer select-none drop-shadow-md">
+                            He leído y acepto los <button type="button" onclick="openTermsModal()"
+                                class="text-primary font-medium hover:text-yellow-400 underline decoration-primary/50 hover:decoration-primary transition-colors inline">Términos
+                                y Condiciones</button> y deseo recibir notificaciones y promociones en mi correo.
+                        </label>
                     </div>
                 </div>
+
+                <div id="emailMsg" class="h-4 mt-2 text-xs opacity-0 transition-opacity duration-300 text-center"></div>
             </div>
         </main>
         <footer class="w-full text-center px-4 relative z-20 shrink-0 pb-0 flex flex-col items-center">
@@ -694,6 +782,68 @@
             </div>
         </footer>
     </div>
+
+    <!-- Terms and Conditions Modal -->
+    <div id="termsModal"
+        class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm opacity-0 transition-opacity duration-300 px-4">
+        <div class="bg-[#121212] border border-primary/30 rounded-2xl w-full max-w-lg shadow-[0_0_40px_rgba(212,175,55,0.15)] relative overflow-hidden transform scale-95 transition-transform duration-300"
+            id="termsModalContent">
+            <!-- Destello de fondo -->
+            <div
+                class="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] bg-primary/5 rounded-full blur-[80px] pointer-events-none">
+            </div>
+
+            <div class="p-6 sm:p-8 relative z-10 max-h-[85vh] flex flex-col">
+                <div class="flex justify-between items-center mb-4 sm:mb-6">
+                    <h3 class="text-xl sm:text-2xl font-display text-primary flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[24px]">verified_user</span>
+                        Términos de Privacidad
+                    </h3>
+                    <button onclick="closeTermsModal()"
+                        class="text-gray-400 hover:text-white transition-colors bg-black/40 rounded-full p-1.5 focus:outline-none focus:ring-2 focus:ring-primary">
+                        <span class="material-symbols-outlined text-[20px] block">close</span>
+                    </button>
+                </div>
+
+                <div
+                    class="overflow-y-auto pr-2 custom-scrollbar flex-1 text-sm text-gray-300 leading-relaxed font-light space-y-4">
+                    <p class="font-medium text-gray-200 text-base">
+                        En Luumen, tu confianza es tan valiosa como nuestras colecciones. Queremos que te sientas
+                        completamente tranquilo(a).
+                    </p>
+                    <p>
+                        <b class="text-white font-medium">Uso Exclusivo de Datos:</b> La información y el correo
+                        electrónico que nos proporcionas se utilizarán de manera <strong>estrictamente confidencial y
+                            exclusiva para Luumen</strong>.
+                    </p>
+                    <p>
+                        <b class="text-white font-medium">Cero Spam y Cero Ventas a Terceros:</b> Prometemos
+                        solemnemente que tus datos <strong>nunca serán vendidos, alquilados ni compartidos</strong> con
+                        ninguna empresa externa o terceros. No enviaremos spam constante; solo recibirás notificaciones
+                        importantes, actualizaciones de la colección fundadora y promociones verdaderamente exclusivas
+                        que aporten valor a tu experiencia como coleccionista.
+                    </p>
+                    <p>
+                        <b class="text-white font-medium">Tu Control Total:</b> En cualquier momento podrás decidir
+                        dejar de recibir nuestras comunicaciones de forma sencilla y directa a través de un enlace en la
+                        parte inferior de nuestros correos.
+                    </p>
+                    <p class="italic text-gray-400 pt-2 border-t border-white/10">
+                        Al continuar y dejarnos tu correo, te conviertes en parte de una comunidad exclusiva
+                        fundamentada en el respeto y el amor por el arte y el coleccionismo.
+                    </p>
+                </div>
+
+                <div class="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-white/10 flex justify-end">
+                    <button onclick="acceptTermsModal()"
+                        class="bg-primary/90 hover:bg-primary text-black font-bold py-2.5 px-6 rounded-xl transition-all shadow-[0_0_15px_rgba(212,175,55,0.3)] hover:shadow-[0_0_25px_rgba(212,175,55,0.6)] text-sm">
+                        Entendido y Acepto
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         document.documentElement.classList.add('dark');
@@ -701,22 +851,65 @@
         // Audio/Mute Implementation
         const muteBtn = document.getElementById('global-mute-btn');
         const muteIcon = document.getElementById('mute-icon');
-        let isMuted = true; // All videos start muted due to browser autoplay policies
+        let isMuted = true; // Empieza muteado por políticas de navegador
+
+        // --- MASTER AUDIO CONTROLLER ---
+        const masterAudio = new Audio();
+        masterAudio.loop = true;
+
+        // Caché de audios para evitar latencia de red al cambiar
+        const audioCache = {};
+        function preloadAudios() {
+            const slides = document.querySelectorAll('.cards-swiper .swiper-slide:not(.swiper-slide-duplicate)');
+            slides.forEach(s => {
+                const src = s.getAttribute('data-audio');
+                if (src && !audioCache[src]) {
+                    const a = new Audio();
+                    a.src = src;
+                    a.preload = 'auto';
+                    audioCache[src] = a;
+                }
+            });
+        }
 
         function updateVideoAudioState() {
-            const allSlides = document.querySelectorAll('.cards-swiper .swiper-slide');
+            const activeSlide = document.querySelector('.cards-swiper .swiper-slide-active');
+            if (!activeSlide) return;
 
-            allSlides.forEach(slide => {
-                const video = slide.querySelector('video');
-                if (!video) return;
+            // --- 1. LÓGICA DE AUDIO (PRE-CARGADO) ---
+            const newAudioSrc = activeSlide.getAttribute('data-audio');
+            const currentSrcFile = masterAudio.src.split('/').pop();
+            const newSrcFile = newAudioSrc ? newAudioSrc.split('/').pop() : null;
 
-                // Si está silenciado globalmente OR no es el slide central activo: se calla.
-                if (isMuted || !slide.classList.contains('swiper-slide-active')) {
-                    video.muted = true;
+            if (newSrcFile && currentSrcFile !== newSrcFile) {
+                masterAudio.src = newAudioSrc;
+                if (!isMuted) masterAudio.play().catch(e => { });
+            } else if (!isMuted && masterAudio.paused) {
+                masterAudio.play().catch(e => { });
+            }
+            masterAudio.muted = isMuted;
+
+            // --- 2. LÓGICA DE VIDEO (BUFFERING PROACTIVO) ---
+            const playingSlides = [
+                activeSlide,
+                document.querySelector('.cards-swiper .swiper-slide-prev'),
+                document.querySelector('.cards-swiper .swiper-slide-next'),
+                document.querySelector('.cards-swiper .swiper-slide-prev')?.previousElementSibling,
+                document.querySelector('.cards-swiper .swiper-slide-next')?.nextElementSibling,
+                document.querySelector('.cards-swiper .swiper-slide-duplicate-active'),
+                document.querySelector('.cards-swiper .swiper-slide-duplicate-prev'),
+                document.querySelector('.cards-swiper .swiper-slide-duplicate-next')
+            ].filter(Boolean);
+
+            const allVideos = document.querySelectorAll('.cards-swiper video');
+            allVideos.forEach(v => {
+                const parentSlide = v.closest('.swiper-slide');
+                const isPlayingSlide = playingSlides.includes(parentSlide);
+                v.muted = true;
+                if (isPlayingSlide) {
+                    if (v.paused) v.play().catch(e => { });
                 } else {
-                    // Si el sonido está activado Y es la tarjeta principal: suena.
-                    video.muted = false;
-                    video.play().catch(e => console.warn("Video playback prevented:", e));
+                    if (!v.paused) v.pause();
                 }
             });
         }
@@ -724,6 +917,14 @@
         muteBtn.addEventListener('click', () => {
             isMuted = !isMuted;
             muteIcon.textContent = isMuted ? 'volume_off' : 'volume_up';
+            masterAudio.muted = isMuted;
+            if (!isMuted) {
+                masterAudio.play().catch(e => { });
+                // Kickstart: Intentar un play/pause rápido en todos para despertar los decodificadores
+                document.querySelectorAll('.cards-swiper video').forEach(v => {
+                    v.play().then(() => { if (v.closest('.swiper-slide-active') === null) v.pause(); }).catch(e => { });
+                });
+            }
             updateVideoAudioState();
         });
 
@@ -734,21 +935,170 @@
             centeredSlides: true,
             slidesPerView: 'auto',
             loop: true,
-            speed: 600, // Hace que la transición sea más natural
+            speed: 600,
+            watchSlidesProgress: true,
+            touchStartPreventDefault: false,
             on: {
-                // Se dispara en el momento exacto en que Swiper decide que hay una nueva tarjeta protagonista
+                init: function () {
+                    preloadAudios();
+                    setTimeout(updateVideoAudioState, 50);
+                },
+                // Actualizar VIDEO al inicio del movimiento para ganar 1 segundo de decodificación
                 slideChange: function () {
-                    // Update the audio state regardless to ensure old cards are muted, 
-                    // and if unmuted, the new card plays sound.
                     updateVideoAudioState();
+                },
+                setTranslate: function () {
+                    const swiper = this;
+                    const centerAbs = swiper.width / 2;
+                    let closestSlide = null;
+                    let minDistance = Infinity;
+
+                    swiper.slides.forEach((slide) => {
+                        const slideRect = slide.getBoundingClientRect();
+                        const swiperRect = swiper.el.getBoundingClientRect();
+                        const slideCenter = slideRect.left - swiperRect.left + (slideRect.width / 2);
+                        const distance = Math.abs(centerAbs - slideCenter);
+                        if (distance < minDistance) {
+                            minDistance = distance;
+                            closestSlide = slide;
+                        }
+                    });
+
+                    if (closestSlide) {
+                        const newAudioSrc = closestSlide.getAttribute('data-audio');
+                        if (newAudioSrc) {
+                            const currentSrcFile = masterAudio.src.split('/').pop();
+                            const newSrcFile = newAudioSrc.split('/').pop();
+                            if (currentSrcFile !== newSrcFile) {
+                                masterAudio.src = newAudioSrc;
+                                if (!isMuted) masterAudio.play().catch(e => { });
+                            }
+                        }
+                    }
                 }
             },
             coverflowEffect: {
-                rotate: 15, // Un poco menos de rotación para evitar brincos bruscos en móviles pequeños
+                rotate: 5,
                 stretch: 0,
-                depth: 250, // Profundidad para el efecto 3D
+                depth: 100,
                 modifier: 1,
-                slideShadows: false, // <-- Deshabilitado para que no cause conflicto visual con la animación flotante ni oscurezca los bordes dorados
+                slideShadows: false,
+            }
+        });
+
+        // Email Submission Logic
+        const submitEmailBtn = document.getElementById('submitEmailBtn');
+        const emailInput = document.getElementById('emailInput');
+        const emailMsg = document.getElementById('emailMsg');
+
+        submitEmailBtn.addEventListener('click', async () => {
+            const email = emailInput.value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const termsCheckbox = document.getElementById('termsCheckbox');
+
+            // Base Validation
+            if (!email) {
+                showMessage('Por favor escribe tu correo.', 'text-red-400');
+                return;
+            }
+
+            if (!emailRegex.test(email)) {
+                showMessage('El formato del correo no es válido.', 'text-red-400');
+                return;
+            }
+
+            // Terms Validation
+            if (!termsCheckbox.checked) {
+                showMessage('Debes aceptar los Términos y Condiciones para continuar.', 'text-yellow-400');
+                termsCheckbox.parentElement.classList.add('animate-pulse');
+                setTimeout(() => termsCheckbox.parentElement.classList.remove('animate-pulse'), 1000);
+                return;
+            }
+
+            // Starting fetch
+            submitEmailBtn.disabled = true;
+            submitEmailBtn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[16px]">sync</span>';
+
+            try {
+                const response = await fetch('api/subscribe.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showMessage(data.message || 'Suscripción exitosa.', 'text-green-400');
+                    emailInput.value = ''; // clear
+                } else {
+                    showMessage(data.error || 'Ocurrió un error. Intenta de nuevo.', 'text-red-400');
+                }
+
+            } catch (err) {
+                showMessage('Error de conexión. Verifica tu internet.', 'text-red-400');
+                console.error(err);
+            } finally {
+                // Restore Button
+                submitEmailBtn.disabled = false;
+                submitEmailBtn.innerHTML = '<span data-i18n="btn_notify">NOTIFICARME</span>';
+                applyTranslations(currentLang); // Re-apply translation to button if needed
+            }
+        });
+
+        function showMessage(msg, colorClass) {
+            emailMsg.className = `h-4 mt-2 text-sm transition-opacity duration-300 ${colorClass} opacity-100 font-medium drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]`;
+            emailMsg.textContent = msg;
+
+            // Hide after 5 seconds
+            setTimeout(() => {
+                emailMsg.classList.remove('opacity-100');
+                emailMsg.classList.add('opacity-0');
+            }, 5000);
+        }
+
+        // --- TERMS MODAL LOGIC ---
+        const termsModal = document.getElementById('termsModal');
+        const termsModalContent = document.getElementById('termsModalContent');
+
+        function openTermsModal() {
+            termsModal.classList.remove('hidden');
+            termsModal.classList.add('flex');
+            // Small delay to allow display block to process before changing opacity
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    termsModal.classList.remove('opacity-0');
+                    termsModalContent.classList.remove('scale-95');
+                });
+            });
+        }
+
+        function closeTermsModal() {
+            termsModal.classList.add('opacity-0');
+            termsModalContent.classList.add('scale-95');
+            setTimeout(() => {
+                termsModal.classList.remove('flex');
+                termsModal.classList.add('hidden');
+            }, 300);
+        }
+
+        function acceptTermsModal() {
+            const checkbox = document.getElementById('termsCheckbox');
+            if (checkbox) checkbox.checked = true;
+            closeTermsModal();
+        }
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !termsModal.classList.contains('hidden')) {
+                closeTermsModal();
+            }
+        });
+
+        // Close on clicking outside
+        termsModal.addEventListener('click', (e) => {
+            if (e.target === termsModal) {
+                closeTermsModal();
             }
         });
 
@@ -1011,6 +1361,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             createParticles();
             initLanguage(); // Initialise language detection
+            updateVideoAudioState(); // Sincronizar audio inicial
         });
     </script>
 </body>
