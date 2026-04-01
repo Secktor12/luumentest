@@ -451,6 +451,16 @@ if ($isLogged) {
                                      </button>
                                 </div>
 
+                                <!-- Export/Render Section -->
+                                <div class="pt-6 mt-6 border-t border-white/5 space-y-4">
+                                     <h4 class="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Renderizado (Burn-in)</h4>
+                                     <button id="render-btn" onclick="renderVideoAction()" class="w-full bg-primary/10 border border-primary/20 text-primary font-bold py-4 rounded-2xl hover:bg-primary/20 transition-all flex items-center justify-center gap-2">
+                                         <span class="material-symbols-outlined text-[20px]">movie_edit</span>
+                                         Grabar Elementos al Video
+                                     </button>
+                                     <p class="text-[9px] text-gray-500 text-center italic">Esto grabará el logo, código y rareza de forma permanente usando FFmpeg.</p>
+                                </div>
+
                                 <!-- Acciones Masivas -->
                                 <div class="mt-8 pt-8 border-t border-white/5">
                                     <div class="p-5 bg-yellow-500/10 border border-yellow-500/20 rounded-3xl">
@@ -571,12 +581,22 @@ if ($isLogged) {
                     el.innerHTML = `
                         <div class="w-full aspect-[9/16] bg-black/40 rounded-[24px] mb-3 flex items-center justify-center overflow-hidden relative group">
                              <video src="${card.video_url}" class="w-full h-full object-cover pointer-events-none" loop muted playsinline></video>
+                             <!-- Brand Overlay -->
+                             <div class="absolute bottom-4 left-0 right-0 text-center pointer-events-none">
+                                <span class="text-[10px] text-primary/80 font-bold uppercase tracking-widest bg-black/40 px-3 py-1 rounded-full backdrop-blur-sm">Luumen.mx</span>
+                             </div>
+                             <!-- Interaction preview indicators -->
+                             <div class="absolute bottom-12 right-2 flex flex-col gap-1 opacity-40">
+                                <span class="text-[12px]">❤️</span>
+                                <span class="text-[12px]">🔥</span>
+                                <span class="text-[12px]">⚡</span>
+                             </div>
                              <!-- Overlay solo en hover -->
                              <div class="active-overlay absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center">
                                  <span class="material-symbols-outlined text-white text-4xl">play_circle</span>
                              </div>
                         </div>
-                        <p class="text-[10px] font-bold uppercase tracking-widest truncate w-full">${card.title}</p>
+                        <p class="text-[10px] font-bold uppercase tracking-widest truncate w-full text-white/90">${card.title}</p>
                         <p class="text-[8px] text-gray-500 mt-1">${card.audio_url ? '🎵 Configurado' : '❌ Sin audio'}</p>
                     `;
                     
@@ -960,7 +980,37 @@ if ($isLogged) {
         }
     });
 
-</script>
+    async function renderVideoAction() {
+        if (!selectedCard) {
+            alert("Por favor selecciona una tarjeta primero.");
+            return;
+        }
 
+        const btn = document.getElementById('render-btn');
+        const oldHTML = btn.innerHTML;
+        
+        if (!confirm("Se va a generar una versión oficial del video con Logo, Código y Rareza grabados. ¿Deseas continuar?")) return;
+
+        btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Procesando...';
+        btn.disabled = true;
+
+        try {
+            const resp = await fetch(`api/render_video.php?card_id=${selectedCard.id}`);
+            const data = await resp.json();
+
+            if (data.status === 'success') {
+                window.open(data.url, '_blank');
+                alert("¡Video generado con éxito! Se ha abierto en una nueva pestaña.");
+            } else {
+                alert("Error: " + data.message);
+            }
+        } catch (e) {
+            alert("Error de conexión con el motor de renderizado.");
+        } finally {
+            btn.innerHTML = oldHTML;
+            btn.disabled = false;
+        }
+    }
+</script>
 </body>
 </html>
