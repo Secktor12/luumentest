@@ -133,7 +133,7 @@ if ($isLogged) {
         }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Cinzel:wght@400;700;900&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <style>
@@ -578,26 +578,49 @@ if ($isLogged) {
                     el.setAttribute('data-id', card.id);
                     el.onclick = () => selectCard(card, el);
                     
+                    // Rarity styling for admin preview
+                    const rarityName = card.rarity || 'COMÚN';
+                    const rarityCode = rarityName.substring(0, 3).toUpperCase();
+                    const displayID = String(card.id).padStart(3, '0');
+
                     el.innerHTML = `
-                        <div class="w-full aspect-[9/16] bg-black/40 rounded-[24px] mb-3 flex items-center justify-center overflow-hidden relative group">
+                        <div class="w-full aspect-[9/16] bg-black/40 rounded-[30px] mb-3 flex items-center justify-center overflow-hidden relative group border border-white/10">
                              <video src="${card.video_url}" class="w-full h-full object-cover pointer-events-none" loop muted playsinline></video>
-                             <!-- Brand Overlay -->
-                             <div class="absolute bottom-4 left-0 right-0 text-center pointer-events-none">
-                                <span class="text-[10px] text-primary/80 font-bold uppercase tracking-widest bg-black/40 px-3 py-1 rounded-full backdrop-blur-sm">Luumen.mx</span>
+                             
+                             <!-- Top Right Code -->
+                             <div class="absolute top-3 right-3 z-20 pointer-events-none">
+                                <span class="bg-black/60 backdrop-blur-md border border-white/10 text-[7px] text-primary/80 px-2 py-0.5 rounded font-mono font-bold">
+                                    ${rarityCode}-FORJ-${displayID}
+                                </span>
                              </div>
-                             <!-- Interaction preview indicators -->
-                             <div class="absolute bottom-12 right-2 flex flex-col gap-1 opacity-40">
-                                <span class="text-[12px]">❤️</span>
-                                <span class="text-[12px]">🔥</span>
-                                <span class="text-[12px]">⚡</span>
+
+                             <!-- Bottom Brand & Name -->
+                             <div class="absolute bottom-4 inset-x-0 flex flex-col items-center gap-1 pointer-events-none z-20">
+                                <span class="text-[7px] border border-primary/40 bg-black/40 px-3 py-0.5 rounded-full text-primary uppercase font-bold tracking-[0.2em] mb-1 scale-90">${rarityName}</span>
+                                <h4 style="font-family: 'Cinzel', serif;" class="text-[12px] font-bold text-white uppercase tracking-widest drop-shadow-[0_0_10px_rgba(0,0,0,0.8)]">${card.title}</h4>
+                                <span style="font-family: 'Comfortaa', cursive;" class="text-[9px] text-primary/90 font-bold mb-1">Luumen.mx</span>
                              </div>
+
+                             <!-- TikTok-style Vertical Side Actions (Preview) -->
+                             <div class="absolute bottom-16 right-3 flex flex-col gap-3 opacity-60">
+                                <div class="w-8 h-8 rounded-full bg-black/60 border border-white/20 flex items-center justify-center scale-75">
+                                    <span class="text-[14px]">⚡</span>
+                                </div>
+                                <div class="w-8 h-8 rounded-full bg-black/60 border border-white/20 flex items-center justify-center scale-75">
+                                    <span class="text-[14px]">🔥</span>
+                                </div>
+                                <div class="w-8 h-8 rounded-full bg-black/60 border border-white/20 flex items-center justify-center scale-75">
+                                    <span class="text-[14px]">❤️</span>
+                                </div>
+                             </div>
+
                              <!-- Overlay solo en hover -->
                              <div class="active-overlay absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center">
-                                 <span class="material-symbols-outlined text-white text-4xl">play_circle</span>
+                                 <span class="material-symbols-outlined text-white text-3xl">play_circle</span>
                              </div>
                         </div>
-                        <p class="text-[10px] font-bold uppercase tracking-widest truncate w-full text-white/90">${card.title}</p>
-                        <p class="text-[8px] text-gray-500 mt-1">${card.audio_url ? '🎵 Configurado' : '❌ Sin audio'}</p>
+                        <p class="text-[9px] text-gray-400 font-bold uppercase tracking-widest truncate w-full text-center px-2 group-hover:text-primary transition-colors">${card.title}</p>
+                        <p class="text-[8px] text-gray-500 mt-1">${card.audio_url ? '🎵 Audio OK' : '❌ Sin audio'}</p>
                     `;
                     
                     const video = el.querySelector('video');
