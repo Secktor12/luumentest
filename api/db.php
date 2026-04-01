@@ -1,14 +1,22 @@
 <?php
 date_default_timezone_set('America/Mexico_City');
-// Configuración de la base de datos
+/* --- CONFIGURACIÓN LOCAL (XAMPP) ---
 $host = 'localhost';
-$db = 'luumen';
+$db = 'luumenmx_web';
 $user = 'root';
-$pass = ''; // Por defecto en XAMPP es vacío
-/*$db = 'luumenmx_web';
-$user = 'luumenmx_admin';
-$pass = 'zkm6J_n}_u8gh[iH'; // Por defecto en XAMPP es vacío*/
+$pass = '';
 $charset = 'utf8mb4';
+*/
+
+// --- CONFIGURACIÓN PRODUCCIÓN (Neubox) ---
+$host = 'localhost';
+$db = 'luumenmx_web';
+$user = 'luumenmx_admin';
+$pass = 'zkm6J_n}_u8gh[iH';
+$charset = 'utf8mb4';
+
+
+
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 $options = [
